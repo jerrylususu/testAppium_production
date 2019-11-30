@@ -26,14 +26,15 @@ def parseXml(page_source):
                 attr_value = getAtrr(childnode, attr)
                 if attr_value == "true":
                     resource_id = childnode.getAttribute("resource-id")
-                    if(resource_id != ''):
-                        attr_true_element_dict[attr].append(childnode.getAttribute("resource-id"))
-                    else:
-                        if(childnode.hasChildNodes()):
-                            first_childnode = childnode.childNodes[0]
-                            attr_true_element_dict[attr].append('child'+'-'+first_childnode.getAttribute("resource-id"))
-                        else:
-                            attr_true_element_dict[attr].append('bounds'+'-'+childnode.getAttribute("bounds"))
+                    attr_true_element_dict[attr].append(resource_id)
+                    # if(resource_id != ''):
+                    #     attr_true_element_dict[attr].append(childnode.getAttribute("resource-id"))
+                    # else:
+                    #     if(childnode.hasChildNodes()):
+                    #         first_childnode = childnode.childNodes[0]
+                    #         attr_true_element_dict[attr].append('child'+'-'+first_childnode.getAttribute("resource-id"))
+                    #     else:
+                    #         attr_true_element_dict[attr].append('bounds'+'-'+childnode.getAttribute("bounds"))
                 else:
                     pass
             print("level " + str(level) + ':' + childnode.nodeName)
