@@ -7,13 +7,14 @@ def parseXml(page_source):
     attr_true_element_dict = {}
     # page_source = open(file).read()
     DOMTree = xml.dom.minidom.parseString(page_source)
-    print("生成DOM tree")
+    # print("生成DOM tree")
     root = DOMTree.documentElement
-    print("根节点为："+root.nodeName)
+    assert isinstance(root, xml.dom.minidom.Element)
+    package = root.childNodes[0].getAttribute("package")
+    # print("根节点为："+root.nodeName)
     queue = []
     queue.append(root)
     level = 1
-    print("level " + str(level) + ':' + root.nodeName)
     for attr in attr_list:
         attr_true_element_dict[attr] = []
     while queue:
@@ -26,7 +27,10 @@ def parseXml(page_source):
                 attr_value = getAtrr(childnode, attr)
                 if attr_value == "true":
                     resource_id = childnode.getAttribute("resource-id")
-                    attr_true_element_dict[attr].append(resource_id)
+                    if(resource_id == ''):
+                        pass
+                    else:
+                        attr_true_element_dict[attr].append(resource_id)
                     # if(resource_id != ''):
                     #     attr_true_element_dict[attr].append(childnode.getAttribute("resource-id"))
                     # else:
@@ -37,10 +41,11 @@ def parseXml(page_source):
                     #         attr_true_element_dict[attr].append('bounds'+'-'+childnode.getAttribute("bounds"))
                 else:
                     pass
-            print("level " + str(level) + ':' + childnode.nodeName)
+            # print("level " + str(level) + ':' + childnode.nodeName)
             queue.append(childnode)
+    print("解析xml文件")
     print(attr_true_element_dict)
-    return attr_true_element_dict
+    return attr_true_element_dict, package
 
 
 def getAtrr(childnode, attname):

@@ -12,7 +12,11 @@ def random_generate_test_baseon_widget(driver, element_dict):
     for key in element_dict.keys():
         if(len(element_dict[key]) != 0):
             attrs.append(key)
-    select_attr = random.choice(attrs)
+    try:
+        select_attr = random.choice(attrs)
+    except:
+        print("There is no element to handle")
+        return
 
     # 随机选择可选中控件
     if(select_attr == "checkable"):
@@ -24,6 +28,7 @@ def random_generate_test_baseon_widget(driver, element_dict):
             select_element = driver.find_element_by_id(resource_id)
             try:
                 select_element.click()
+                print("click checkable element"+resource_id)
             except:
                 print("Something was wrong when click checkable element"+resource_id)
 
@@ -38,6 +43,7 @@ def random_generate_test_baseon_widget(driver, element_dict):
             select_element = driver.find_element_by_id(resource_id)
             try:
                 select_element.click()
+                print("click clickable element"+resource_id)
             except:
                 print("Something was wrong when click clickable element"+resource_id)
 
@@ -52,12 +58,14 @@ def random_generate_test_baseon_widget(driver, element_dict):
             select_element = driver.find_element_by_id(resource_id)
             try:
                 select_element.click()
+                print("click focusable element"+resource_id)
             except:
                 print("Something was wrong when click focusable element"+resource_id)
             assert isinstance(select_element, webdriver.webelement.WebElement)
             ran_str = ''.join(random.sample(string.ascii_letters + string.digits, 8))
             try:
                 select_element.send_keys(ran_str)
+                print("send keys to focused element"+resource_id)
             except:
                 print("Something was wrong when send keys to focused element"+resource_id)
 
@@ -74,6 +82,7 @@ def random_generate_test_baseon_widget(driver, element_dict):
             try:
                 ran_str = ''.join(random.sample(string.ascii_letters + string.digits, 8))
                 select_element.send_keys(ran_str)
+                print("send keys to focused element" + resource_id)
             except:
                 print("Something was wrong when send keys to focused element"+resource_id)
 
@@ -99,6 +108,7 @@ def random_generate_test_baseon_widget(driver, element_dict):
                 try:
                     driver.swipe(element_location_x+element_size_width*(1/4), element_location_y+element_size_height/2,
                                  element_location_x+element_size_width*(3/4), element_location_y+element_size_height/2, 1000)
+                    print("left swipe scrollable element"+resource_id)
                 except:
                     print("Something was wrong when left swipe scrollable element"+resource_id)
             # 向右划
@@ -106,6 +116,7 @@ def random_generate_test_baseon_widget(driver, element_dict):
                 try:
                     driver.swipe(element_location_x + element_size_width*(3/4), element_location_y + element_size_height / 2,
                                  element_location_x+ element_size_width*(1/4), element_location_y + element_size_height / 2, 1000)
+                    print("right swipe scrollable element" + resource_id)
                 except:
                     print("Something was wrong when right swipe scrollable element"+resource_id)
             # 向上划
@@ -113,6 +124,7 @@ def random_generate_test_baseon_widget(driver, element_dict):
                 try:
                     driver.swipe(element_location_x+element_size_width/2, element_location_y+element_size_height*(3/4),
                              element_location_x+element_size_width/2, element_location_y+element_size_height*(1/4), 1000)
+                    print("up swipe scrollable element" + resource_id)
                 except:
                     print("Something was wrong when up swipe scrollable element"+resource_id)
 
@@ -121,12 +133,13 @@ def random_generate_test_baseon_widget(driver, element_dict):
                 try:
                     driver.swipe(element_location_x + element_size_width / 2, element_location_y+element_size_height*(1/4),
                              element_location_x + element_size_width / 2, element_location_y+element_size_height*(3/4), 1000)
+                    print("down swipe scrollable element" + resource_id)
                 except:
                     print("Something was wrong when down swipe scrollable element"+resource_id)
 
     # 随机选择可长按控件
     elif(select_attr == "long-clickable"):
-        elements = element_dict.get("focused")
+        elements = element_dict.get("long-clickable")
         resource_id = random.choice(elements)
         print(resource_id)
         if(resource_id == ''):
@@ -137,13 +150,13 @@ def random_generate_test_baseon_widget(driver, element_dict):
             # select_element
             try:
                 TouchAction(driver).long_press(select_element).perform()
+                print("long press long-clickable element"+resource_id)
             except:
                 print("Something was wrong when long-press long-clickable element"+resource_id)
 
 
-def random_test(driver, page_source):
-    element_dict = parseXML.parseXml(page_source)
-    random_generate_test_baseon_widget(driver, element_dict)
+def random_test(driver, dict):
+    random_generate_test_baseon_widget(driver, dict)
 
 if __name__ == "__main__":
     pass
