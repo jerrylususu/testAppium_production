@@ -46,15 +46,15 @@ def generate_test_base_on_widget(driver, executable_elements, logging, i):
                 try:
                     select_element.send_keys(random_text)
                     logging.info(form_string("event {}:".format(i), "widget", "resource_id:", resource_id, "operation:",
-                                             "send text"))
+                                             "send text", "text:", random_text))
                     print(form_string("event {}:".format(i), "widget", "resource_id:", resource_id, "operation:",
-                                      "send text"))
+                                      "send text", "text:", random_text))
                     return 1
                 except Exception:
                     logging.error(form_string("event {}:".format(i), "widget", "Something went wrong when send",
                                               random_text, "to", resource_id))
-                    print(form_string("event {}:".format(i), "widget", "Something went wrong when send", random_text, "to",
-                                      resource_id))
+                    print(form_string("event {}:".format(i), "widget", "Something went wrong when send", random_text,
+                                      "to", resource_id))
                     return 0
 
             # scroll
