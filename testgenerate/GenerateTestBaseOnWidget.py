@@ -20,10 +20,12 @@ def generate_test_base_on_widget(driver, executable_elements, logging, i):
                     logging.info(form_string("event {}:".format(i), "widget", "resource_id:", resource_id, "operation:",
                                              "click"))
                     print(form_string("event {}:".format(i), "widget", "resource_id:", resource_id, "operation:", "click"))
-                except RuntimeError:
+                    return 1
+                except Exception:
                     logging.error(form_string("event {}:".format(i), "widget", "Something went wrong when click",
                                               resource_id))
                     print(form_string("event {}:".format(i), "widget", "Something went wrong when click", resource_id))
+                    return 0
 
             # send text
             elif event == 'send_text':
@@ -34,11 +36,13 @@ def generate_test_base_on_widget(driver, executable_elements, logging, i):
                                              "send text"))
                     print(form_string("event {}:".format(i), "widget", "resource_id:", resource_id, "operation:",
                                       "send text"))
-                except RuntimeError:
+                    return 1
+                except Exception:
                     logging.error(form_string("event {}".format(i), "widget", "Something went wrong when send",
                                               random_text, "to", resource_id))
                     print(form_string("event {}".format(i), "widget", "Something went wrong when send", random_text, "to",
                                       resource_id))
+                    return 0
 
             # scroll
             elif event == 'scroll':
@@ -57,11 +61,13 @@ def generate_test_base_on_widget(driver, executable_elements, logging, i):
                                                  "left scroll"))
                         print(form_string("event {}".format(i), "widget", "resource_id:", resource_id, "operation:",
                                           "left scroll"))
-                    except RuntimeError:
+                        return 1
+                    except Exception:
                         logging.error(form_string("event {}".format(i), "widget", "Something went wrong when left scroll",
                                                   resource_id))
                         print(form_string("event {}".format(i), "widget", "Something went wrong when left scroll",
                                           resource_id))
+                        return 0
                 # right scroll
                 elif select_direction == "right":
                     try:
@@ -71,11 +77,13 @@ def generate_test_base_on_widget(driver, executable_elements, logging, i):
                                      "right scroll"))
                         print(form_string("event {}".format(i), "widget", "resource_id:", resource_id, "operation:",
                                           "right scroll"))
-                    except RuntimeError:
+                        return 1
+                    except Exception:
                         logging.error(form_string("event {}".format(i), "widget", "Something went wrong when right scroll",
                                                   resource_id))
                         print(form_string("event {}".format(i), "widget", "Something went wrong when right scroll",
                                           resource_id))
+                        return 0
                 # left scroll
                 elif select_direction == "up":
                     try:
@@ -85,11 +93,13 @@ def generate_test_base_on_widget(driver, executable_elements, logging, i):
                                                  "up scroll"))
                         print(form_string("event {}".format(i), "widget", "resource_id:", resource_id, "operation:",
                                           "up scroll"))
-                    except RuntimeError:
+                        return 1
+                    except Exception:
                         logging.error(form_string("event {}".format(i), "widget", "Something went wrong when up scroll",
                                                   resource_id))
                         print(form_string("event {}".format(i), "widget", "Something went wrong when up scroll",
                                           resource_id))
+                        return 0
                 # down scroll
                 elif select_direction == "down":
                     try:
@@ -99,16 +109,19 @@ def generate_test_base_on_widget(driver, executable_elements, logging, i):
                                      "down scroll"))
                         print(form_string("event {}".format(i), "widget", "resource_id:", resource_id, "operation:",
                                           "down scroll"))
-                    except RuntimeError:
+                        return 1
+                    except Exception:
                         logging.error(form_string("event {}".format(i), "widget", "Something went wrong when down scroll",
                                                   resource_id))
                         print(form_string("event {}".format(i), "widget", "Something went wrong when down scroll",
                                           resource_id))
-        except RuntimeError:
+                        return 0
+        except Exception:
             print(form_string("event {}".format(i), "widget", "Can not find element by", resource_id))
             logging.error(form_string("event {}".format(i), "widget", "Can not find element by", resource_id))
+            return 0
 
     else:
         print(form_string("event {}".format(i), "widget", "resource-id is null"))
         logging.error(form_string("event {}".format(i), "widget", "resource-id is null"))
-
+        return 0

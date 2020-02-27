@@ -26,9 +26,11 @@ def generate_test_on_screen(driver, logging, i):
             pinch_action.perform()
             print(form_string("event {}".format(i), "screen", "operation:", "pinch"))
             logging.info(form_string("event {}".format(i), "screen", "operation:", "pinch"))
-        except RuntimeError:
+            return 1
+        except Exception:
             print(form_string("event {}".format(i), "screen", "Something went wrong when pinch"))
             logging.error(form_string("event {}".format(i), "screen", "Something went wrong when pinch"))
+            return 0
 
     else:
         try:
@@ -43,6 +45,8 @@ def generate_test_on_screen(driver, logging, i):
             pinch_action.perform()
             print(form_string("event {}".format(i), "screen", "operation:", "zoom"))
             logging.info(form_string("event {}".format(i), "screen", "operation:", "zoom"))
-        except RuntimeError:
+            return 1
+        except Exception:
             print(form_string("event {}".format(i), "screen", "Something went wrong when zoom"))
             logging.error(form_string("event {}".format(i), "screen", "Something went wrong when zoom"))
+            return 0

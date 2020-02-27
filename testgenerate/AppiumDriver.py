@@ -33,9 +33,8 @@ driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
 # sleep for get true page source
 sleep(2)
 
-i = 0
-while i < 10:
-    i += 1
+i = 1
+while i < 50:
     # get page_source
     page_source = driver.page_source
 
@@ -46,11 +45,13 @@ while i < 10:
     if package == desired_caps['appPackage']:
         random_num = random.random()
         if random_num > 0.2:
-            generate_test_base_on_widget(driver, executable_elements, logging, i)
+            succeed = generate_test_base_on_widget(driver, executable_elements, logging, i)
         elif random_num > 0.1:
-            generate_test_on_screen(driver, logging, i)
+            succeed = generate_test_on_screen(driver, logging, i)
         else:
-            generate_test_on_system(driver, logging, i)
+            succeed = generate_test_on_system(driver, logging, i)
+        if succeed:
+            i += 1
     else:
         break
 p.kill()
