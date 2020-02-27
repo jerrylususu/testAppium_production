@@ -30,12 +30,10 @@ p = subprocess.Popen("exec " + "adb logcat > log/logcat.log", stdout=subprocess.
 
 driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
 
-# sleep for get true page source
-sleep(2)
-
 i = 1
 while i < 50:
-    # get page_source
+    # sleep for get page_source
+    sleep(2)
     page_source = driver.page_source
 
     # get package name and executable widgets

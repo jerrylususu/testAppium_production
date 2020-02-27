@@ -24,12 +24,12 @@ def generate_test_on_screen(driver, logging, i):
             pinch_action = MultiAction(driver)
             pinch_action.add(action1, action2)
             pinch_action.perform()
-            print(form_string("event {}".format(i), "screen", "operation:", "pinch"))
-            logging.info(form_string("event {}".format(i), "screen", "operation:", "pinch"))
+            print(form_string("event {}:".format(i), "screen", "operation:", "pinch"))
+            logging.info(form_string("event {}:".format(i), "screen", "operation:", "pinch"))
             return 1
         except Exception:
-            print(form_string("event {}".format(i), "screen", "Something went wrong when pinch"))
-            logging.error(form_string("event {}".format(i), "screen", "Something went wrong when pinch"))
+            print(form_string("event {}:".format(i), "screen", "Something went wrong when pinch"))
+            logging.error(form_string("event {}:".format(i), "screen", "Something went wrong when pinch"))
             return 0
 
     else:
@@ -43,10 +43,10 @@ def generate_test_on_screen(driver, logging, i):
             pinch_action = MultiAction(driver)
             pinch_action.add(action1, action2)
             pinch_action.perform()
-            print(form_string("event {}".format(i), "screen", "operation:", "zoom"))
-            logging.info(form_string("event {}".format(i), "screen", "operation:", "zoom"))
+            print(form_string("event {}:".format(i), "screen", "operation:", "zoom"))
+            logging.info(form_string("event {}:".format(i), "screen", "operation:", "zoom"))
             return 1
         except Exception:
-            print(form_string("event {}".format(i), "screen", "Something went wrong when zoom"))
-            logging.error(form_string("event {}".format(i), "screen", "Something went wrong when zoom"))
+            print(form_string("event {}:".format(i), "screen", "Something went wrong when zoom"))
+            logging.error(form_string("event {}:".format(i), "screen", "Something went wrong when zoom"))
             return 0
