@@ -5,8 +5,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/testgenerate/AppiumDriver.py" beforeDir="false" afterPath="$PROJECT_DIR$/testgenerate/AppiumDriver.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/testgenerate/GenerateTestBaseOnWidget.py" beforeDir="false" afterPath="$PROJECT_DIR$/testgenerate/GenerateTestBaseOnWidget.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testgenerate/GenerateTestOnScreen.py" beforeDir="false" afterPath="$PROJECT_DIR$/testgenerate/GenerateTestOnScreen.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testgenerate/GenerateTestOnSystem.py" beforeDir="false" afterPath="$PROJECT_DIR$/testgenerate/GenerateTestOnSystem.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,7 +13,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/testAppium$testAppium.coverage" NAME="testAppium Coverage Results" MODIFIED="1582788643312" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/testAppium$testAppium.coverage" NAME="testAppium Coverage Results" MODIFIED="1582808129545" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/testAppium$run.coverage" NAME="run Coverage Results" MODIFIED="1582123031787" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/testAppium$parseXML.coverage" NAME="parseXML Coverage Results" MODIFIED="1582633169921" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
@@ -25,7 +23,7 @@
         <entry file="file://$PROJECT_DIR$/testgenerate/GenerateTestOnSystem.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="307">
-              <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+              <caret line="24" selection-start-line="24" selection-end-line="24" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -33,11 +31,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/testgenerate/GenerateTestOnScreen.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="247">
-              <caret line="48" column="25" lean-forward="true" selection-start-line="48" selection-start-column="25" selection-end-line="48" selection-end-column="25" />
+              <caret line="48" column="25" selection-start-line="48" selection-start-column="25" selection-end-line="48" selection-end-column="25" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -48,8 +46,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/testgenerate/GenerateTestBaseOnWidget.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1101">
-              <caret line="140" selection-start-line="140" selection-end-line="140" />
+            <state relative-caret-position="210">
+              <caret line="14" column="29" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -57,11 +55,23 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/idea/problem.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="180">
+                <caret line="12" column="21" lean-forward="true" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/testgenerate/AppiumDriver.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="366">
-              <caret line="44" column="28" selection-start-line="44" selection-start-column="28" selection-end-line="44" selection-end-column="28" />
+            <state relative-caret-position="146">
+              <caret line="26" column="47" selection-start-line="26" selection-start-column="47" selection-end-line="26" selection-end-column="47" />
               <folding>
                 <element signature="e#19#28#0" expanded="true" />
               </folding>
@@ -121,12 +131,12 @@
         <option value="$PROJECT_DIR$/util/ProcessText.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/log/runlog.log" />
-        <option value="$PROJECT_DIR$/testgenerate/AppiumDriver.py" />
         <option value="$PROJECT_DIR$/testgenerate/GenerateTestOnSystem.py" />
         <option value="$PROJECT_DIR$/testgenerate/GenerateTestOnScreen.py" />
         <option value="$PROJECT_DIR$/idea/idea.md" />
-        <option value="$PROJECT_DIR$/idea/problem.md" />
+        <option value="$PROJECT_DIR$/testgenerate/AppiumDriver.py" />
         <option value="$PROJECT_DIR$/testgenerate/GenerateTestBaseOnWidget.py" />
+        <option value="$PROJECT_DIR$/idea/problem.md" />
       </list>
     </option>
   </component>
@@ -323,7 +333,7 @@
       <workItem from="1582033102743" duration="13353000" />
       <workItem from="1582361028176" duration="9349000" />
       <workItem from="1582556378048" duration="44254000" />
-      <workItem from="1582786425678" duration="3351000" />
+      <workItem from="1582786425678" duration="6887000" />
     </task>
     <task id="LOCAL-00001" summary="add stringToXml">
       <created>1573647457126</created>
@@ -353,11 +363,25 @@
       <option name="project" value="LOCAL" />
       <updated>1582773782708</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="try to solve problem that resource-id is null&#10;change log format">
+      <created>1582790890749</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1582790890750</updated>
+    </task>
+    <task id="LOCAL-00006" summary="log random text sent to the editText">
+      <created>1582806057091</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1582806057091</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="85370000" />
+    <option name="totallyTimeSpent" value="88906000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -372,18 +396,18 @@
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19527897" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18597998" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.2746988" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.46506023" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.37710842" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3939759" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32961932" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.1746988" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.36385542" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.2879518" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
@@ -426,7 +450,9 @@
     <MESSAGE value="add randomtest" />
     <MESSAGE value="refactor" />
     <MESSAGE value="add return value&#10;change exception" />
-    <option name="LAST_COMMIT_MESSAGE" value="add return value&#10;change exception" />
+    <MESSAGE value="try to solve problem that resource-id is null&#10;change log format" />
+    <MESSAGE value="log random text sent to the editText" />
+    <option name="LAST_COMMIT_MESSAGE" value="log random text sent to the editText" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/util.py" />
@@ -510,26 +536,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/idea/problem.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="105">
-            <caret line="7" column="85" selection-start-line="7" selection-start-column="85" selection-end-line="7" selection-end-column="85" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/testgenerate/GenerateTestOnSystem.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/log/runlog.log">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -544,10 +550,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/testgenerate/GenerateTestOnScreen.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="48" column="25" selection-start-line="48" selection-start-column="25" selection-end-line="48" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testgenerate/GenerateTestOnSystem.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="307">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/testgenerate/AppiumDriver.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="44" column="28" selection-start-line="44" selection-start-column="28" selection-end-line="44" selection-end-column="28" />
+        <state relative-caret-position="146">
+          <caret line="26" column="47" selection-start-line="26" selection-start-column="47" selection-end-line="26" selection-end-column="47" />
           <folding>
             <element signature="e#19#28#0" expanded="true" />
           </folding>
@@ -556,21 +582,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/testgenerate/GenerateTestBaseOnWidget.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1101">
-          <caret line="140" selection-start-line="140" selection-end-line="140" />
+        <state relative-caret-position="210">
+          <caret line="14" column="29" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/testgenerate/GenerateTestOnScreen.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="48" column="25" lean-forward="true" selection-start-line="48" selection-start-column="25" selection-end-line="48" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
+    <entry file="file://$PROJECT_DIR$/idea/problem.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="180">
+            <caret line="12" column="21" lean-forward="true" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>

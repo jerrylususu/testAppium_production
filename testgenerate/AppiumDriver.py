@@ -24,6 +24,7 @@ desired_caps['deviceName'] = 'emulator-5554'
 desired_caps['appPackage'] = 'de.danoeh.antennapod'
 desired_caps['appActivity'] = 'de.danoeh.antennapod.activity.SplashActivity'
 desired_caps['eventTimings'] = True
+desired_caps['automationName'] = 'UIAutomator2'
 logging.info("logging app...")
 
 p = subprocess.Popen("exec " + "adb logcat > log/logcat.log", stdout=subprocess.PIPE, shell=True, preexec_fn=os.setsid)
