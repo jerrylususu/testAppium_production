@@ -5,9 +5,6 @@ def parseXml(page_source):
     # root
     root = ET.fromstring(page_source)
 
-    # get package
-    package = root.find("./").get('package')
-
     # find executable elements
     checkable = root.findall(".//*[@checkable='true']")
     checked = root.findall(".//*[@checked='true']")
@@ -29,4 +26,4 @@ def parseXml(page_source):
 
     # executable elements
     executable_elements = list(click_elements.union(send_text_elements, scrollable_elements))
-    return package, executable_elements
+    return executable_elements
