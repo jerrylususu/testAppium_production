@@ -15,7 +15,7 @@ from util.ProcessText import delete_text, form_string
 
 delete_text('log/logcat.log')
 delete_text('log/runlog.log')
-logging.basicConfig(level=logging.INFO, filename="log/runlog.log", format="%(asctime)s%(filename)s [line:%(lineno)d] %(levelname)s %(message)s")
+logging.basicConfig(level=logging.INFO, filename="log/runlog.log", format="%(asctime)s [line:%(lineno)d] %(levelname)s %(message)s")
 
 desired_caps = {}
 desired_caps['platformName'] = 'Android'
@@ -27,8 +27,11 @@ desired_caps['eventTimings'] = True
 desired_caps['automationName'] = 'UIAutomator2'
 logging.info("logging app...")
 
-p = subprocess.Popen("exec " + "adb logcat > log/logcat.log", stdout=subprocess.PIPE, shell=True, preexec_fn=os.setsid)
+log_file = open("log/logcat.log", "w")
+os.system("adb logcat -b all -c")
+p = subprocess.Popen("adb logcat appium:I System.err:W *:S", stdout=log_file, shell=True)
 
+# p = subprocess.Popen("adb logcat appium:I System.err:W *:S", stdout=log_file, shell=True, preexec_fn=os.setsid)
 driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
 
 # the number of the continuous same activities
@@ -37,7 +40,7 @@ same_act_num = list()
 # the number of loop
 i = 1
 
-while i < 50:
+while i < 5:
     # sleep for get page_source
     sleep(2)
     page_source = driver.page_source
@@ -83,3 +86,4 @@ while i < 50:
     else:
         break
 p.kill()
+p.wait()

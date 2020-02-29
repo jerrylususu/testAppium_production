@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="30ee6bdb-5f1e-45be-a2b6-054961282516" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/processlogcat/ProcessLogFile.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/testgenerate/AppiumDriver.py" beforeDir="false" afterPath="$PROJECT_DIR$/testgenerate/AppiumDriver.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/util/ParseXML.py" beforeDir="false" afterPath="$PROJECT_DIR$/util/ParseXML.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -13,65 +13,22 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/testAppium$testAppium.coverage" NAME="testAppium Coverage Results" MODIFIED="1582858111097" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/testAppium$testAppium.coverage" NAME="testAppium Coverage Results" MODIFIED="1582998568873" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/testAppium$run.coverage" NAME="run Coverage Results" MODIFIED="1582123031787" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/testAppium$parseXML.coverage" NAME="parseXML Coverage Results" MODIFIED="1582633169921" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/testgenerate/GenerateTestOnSystem.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="24" selection-start-line="24" selection-end-line="24" />
-              <folding>
-                <element signature="e#0#13#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/log/runlog.log">
+          <provider selected="true" editor-type-id="LogFileEditorProvider" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/testgenerate/GenerateTestOnScreen.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="48" column="25" selection-start-line="48" selection-start-column="25" selection-end-line="48" selection-end-column="25" />
-              <folding>
-                <element signature="e#0#13#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/testgenerate/GenerateTestBaseOnWidget.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="14" column="29" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
-              <folding>
-                <element signature="e#0#13#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/idea/problem.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="150">
-                <caret line="10" column="47" selection-start-line="10" selection-start-column="47" selection-end-line="10" selection-end-column="47" />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/testgenerate/AppiumDriver.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-684">
-              <caret line="16" column="29" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
+            <state relative-caret-position="465">
+              <caret line="31" column="88" selection-start-line="31" selection-start-column="88" selection-end-line="31" selection-end-column="88" />
               <folding>
                 <element signature="e#19#28#0" expanded="true" />
               </folding>
@@ -80,29 +37,9 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/log/runlog.log">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/log/logcat.log">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-138934">
-              <caret line="3458" column="18" selection-start-line="3458" selection-start-column="6" selection-end-line="3458" selection-end-column="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/util/ParseXML.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="29" selection-start-line="29" selection-end-line="29" />
-            </state>
+          <provider selected="true" editor-type-id="LogFileEditorProvider">
+            <state relative-caret-position="-4" />
           </provider>
         </entry>
       </file>
@@ -126,6 +63,10 @@
       <find>version</find>
       <find>checkable</find>
       <find>Target</find>
+      <find>target</find>
+      <find>hello</find>
+      <find>Appium</find>
+      <find>ActivityManager</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$</dir>
@@ -162,7 +103,10 @@
         <option value="$PROJECT_DIR$/idea/idea.md" />
         <option value="$PROJECT_DIR$/testgenerate/GenerateTestBaseOnWidget.py" />
         <option value="$PROJECT_DIR$/util/ParseXML.py" />
+        <option value="$PROJECT_DIR$/processlogcat/ProcessLogFIle.py" />
+        <option value="$PROJECT_DIR$/processlogcat/ProcessLogFile.py" />
         <option value="$PROJECT_DIR$/idea/problem.md" />
+        <option value="$PROJECT_DIR$/log/logcat.log" />
         <option value="$PROJECT_DIR$/testgenerate/AppiumDriver.py" />
       </list>
     </option>
@@ -170,21 +114,6 @@
   <component name="ProjectFrameBounds" fullScreen="true">
     <option name="width" value="1440" />
     <option name="height" value="900" />
-  </component>
-  <component name="ProjectInspectionProfilesVisibleTreeState">
-    <entry key="Project Default">
-      <profile-state>
-        <expanded-state>
-          <State />
-          <State>
-            <id>Internationalization</id>
-          </State>
-          <State>
-            <id>Python</id>
-          </State>
-        </expanded-state>
-      </profile-state>
-    </entry>
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -228,8 +157,9 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="add_unversioned_files" value="$PROJECT_DIR$/log/runlog.log&#10;/Users/a00/Documents/testAppium/testAppium/log/logcat.log" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/testAppium.py" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -361,7 +291,12 @@
       <workItem from="1582361028176" duration="9349000" />
       <workItem from="1582556378048" duration="44254000" />
       <workItem from="1582786425678" duration="10314000" />
-      <workItem from="1582855930130" duration="1806000" />
+      <workItem from="1582855930130" duration="4944000" />
+      <workItem from="1582957534520" duration="252000" />
+      <workItem from="1582958023333" duration="7023000" />
+      <workItem from="1582993205358" duration="69000" />
+      <workItem from="1582993278073" duration="551000" />
+      <workItem from="1582993890823" duration="4619000" />
     </task>
     <task id="LOCAL-00001" summary="add stringToXml">
       <created>1573647457126</created>
@@ -412,11 +347,18 @@
       <option name="project" value="LOCAL" />
       <updated>1582808758590</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="add the check to the number of continuous same activities">
+      <created>1582858317856</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1582858317856</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="94139000" />
+    <option name="totallyTimeSpent" value="109791000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -431,18 +373,18 @@
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1695279" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.17310444" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.2746988" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.4120482" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.24698795" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3939759" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32961932" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.36385542" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.28554216" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.2879518" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
@@ -454,18 +396,18 @@
       <window_info anchor="right" id="SciView" order="4" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13805436" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17310444" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.2746988" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.39518073" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.24698795" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3939759" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32961932" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.52048194" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.28554216" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.2879518" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
@@ -488,7 +430,8 @@
     <MESSAGE value="try to solve problem that resource-id is null&#10;change log format" />
     <MESSAGE value="log random text sent to the editText" />
     <MESSAGE value="change to UIAutomator2&#10;check the whether the list of executable elements is null" />
-    <option name="LAST_COMMIT_MESSAGE" value="change to UIAutomator2&#10;check the whether the list of executable elements is null" />
+    <MESSAGE value="add the check to the number of continuous same activities" />
+    <option name="LAST_COMMIT_MESSAGE" value="add the check to the number of continuous same activities" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/util.py" />
@@ -560,23 +503,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/testgenerate/GenerateTestBaseOnWidget.py">
+    <entry file="file://$PROJECT_DIR$/util/ParseXML.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="14" column="29" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="435">
+          <caret line="29" selection-start-line="29" selection-end-line="29" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/idea/problem.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="150">
-            <caret line="10" column="47" selection-start-line="10" selection-start-column="47" selection-end-line="10" selection-end-column="47" />
-          </first_editor>
-          <second_editor />
+    <entry file="file://$PROJECT_DIR$/testgenerate/GenerateTestOnScreen.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="48" column="25" selection-start-line="48" selection-start-column="25" selection-end-line="48" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -590,37 +530,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/testgenerate/GenerateTestOnScreen.py">
+    <entry file="file://$PROJECT_DIR$/testgenerate/GenerateTestBaseOnWidget.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="48" column="25" selection-start-line="48" selection-start-column="25" selection-end-line="48" selection-end-column="25" />
+        <state relative-caret-position="210">
+          <caret line="14" column="29" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/util/ParseXML.py">
+    <entry file="file://$PROJECT_DIR$/processlogcat/__init__.py" />
+    <entry file="file://$PROJECT_DIR$/processlogcat/ProcessLogFile.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" selection-start-line="29" selection-end-line="29" />
+        <state relative-caret-position="165">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/testgenerate/AppiumDriver.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-684">
-          <caret line="16" column="29" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
-          <folding>
-            <element signature="e#19#28#0" expanded="true" />
-          </folding>
+    <entry file="file://$PROJECT_DIR$/idea/problem.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="375">
+            <caret line="25" selection-start-line="25" selection-end-line="25" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/log/runlog.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
+      <provider selected="true" editor-type-id="LogFileEditorProvider" />
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>
@@ -630,9 +572,22 @@
           <caret line="20" column="25" lean-forward="true" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
         </state>
       </provider>
+      <provider selected="true" editor-type-id="LogFileEditorProvider">
+        <state relative-caret-position="-4" />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="27" column="161" selection-start-line="27" selection-start-column="161" selection-end-line="27" selection-end-column="161" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testgenerate/AppiumDriver.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-138934">
-          <caret line="3458" column="18" selection-start-line="3458" selection-start-column="6" selection-end-line="3458" selection-end-column="18" />
+        <state relative-caret-position="465">
+          <caret line="31" column="88" selection-start-line="31" selection-start-column="88" selection-end-line="31" selection-end-column="88" />
+          <folding>
+            <element signature="e#19#28#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
