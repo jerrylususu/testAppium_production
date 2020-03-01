@@ -30,4 +30,8 @@
     
 + adb logcat time is not consistent with appium log
 
-    **do not know**
+    **can not make sure that they are sync, and also appium base on network, so use timestamp is infeasible**
+    
++ So what should I get correct test case.
+
+    **just analyse adb logcat to get Appium command(test cases)**
