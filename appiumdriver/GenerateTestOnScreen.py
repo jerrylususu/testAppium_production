@@ -6,7 +6,7 @@ from appium.webdriver.common.touch_action import TouchAction
 from util.ProcessText import form_string
 
 
-def generate_test_on_screen(driver, logging, i):
+def generate_test_on_screen(driver, logging, i, appium_command):
     event_list = ['pinch', 'zoom']
     selected_event = random.choice(event_list)
 
@@ -15,6 +15,8 @@ def generate_test_on_screen(driver, logging, i):
 
     if selected_event == 'pinch':
         try:
+            width = driver.get_window_size()['width']
+            height = driver.get_window_size()['height']
             action1 = TouchAction(driver).press(el=None, x=width * 0.2, y=height * 0.2).wait(1000).move_to(el=None,
                                                                                                            x=width * 0.4,
                                                                                                            y=height * 0.4).release()
@@ -24,8 +26,9 @@ def generate_test_on_screen(driver, logging, i):
             pinch_action = MultiAction(driver)
             pinch_action.add(action1, action2)
             pinch_action.perform()
-            print(form_string("event {}:".format(i), "screen", "operation:", "pinch"))
             logging.info(form_string("event {}:".format(i), "screen", "operation:", "pinch"))
+            print(form_string("event {}:".format(i), "screen", "operation:", "pinch"))
+            appium_command.append("driver.multi_perform_pinch()")
             return 1
         except Exception:
             print(form_string("event {}:".format(i), "screen", "Something went wrong when pinch"))
@@ -43,8 +46,9 @@ def generate_test_on_screen(driver, logging, i):
             pinch_action = MultiAction(driver)
             pinch_action.add(action1, action2)
             pinch_action.perform()
-            print(form_string("event {}:".format(i), "screen", "operation:", "zoom"))
             logging.info(form_string("event {}:".format(i), "screen", "operation:", "zoom"))
+            print(form_string("event {}:".format(i), "screen", "operation:", "zoom"))
+            appium_command.append("driver.multi_perform_zoom()")
             return 1
         except Exception:
             print(form_string("event {}:".format(i), "screen", "Something went wrong when zoom"))
