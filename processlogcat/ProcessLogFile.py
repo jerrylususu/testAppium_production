@@ -6,7 +6,8 @@ keywords = {
                'send text': 'send keys to element command',
                'scroll': 'JSON Payload',
                'pinch/zoom': '/touch/multi/perform',
-               'keycode': 'Calling PressKeyCode'
+               'keycode': 'Calling PressKeyCode',
+               'get_page_source': '/source'
     }
 
 driver_pinch = "width = driver.get_window_size()['width']"+"\n"+"height = driver.get_window_size()['height']"+"\n"+"action1 = TouchAction(driver).press(el=None, x=width * 0.2, y=height * 0.2).wait(1000).move_to(el=None,x=width * 0.4,y=height * 0.4).release()"+"\n"+"action2 = TouchAction(driver).press(el=None, x=width * 0.8, y=height * 0.8).wait(1000).move_to(el=None,x=width * 0.6,y=height * 0.6).release()"+"\n"+"pinch_action = MultiAction(driver)"+"\n"+"pinch_action.add(action1, action2)"+"\n"+"pinch_action.perform()"
@@ -65,6 +66,8 @@ def check_line(resource_id, line, raw_command):
         raw_command.append("multi_perform")
     elif keywords['keycode'] in line:
         raw_command.append("driver.press_keycode")
+    elif keywords['get_page_source'] in line:
+        raw_command.append("sleep(2)")
     else:
         pass
 
@@ -86,30 +89,28 @@ def check_and_complete_test(raw_command, appium_command, native_APIs, page_sourc
     if len(native_APIs) == 0:
         with open('tests/test/test.txt', "w") as of:
             of.write("test:"+"\n")
-            of.write("sleep(2)"+"\n")
             for i in range(len(raw_command)):
                     if raw_command[i] in appium_command[i]:
                         if appium_command[i] == 'driver.multi_perform_pinch()':
-                            of.write(driver_pinch+"\n"+"sleep(1)"+"\n")
+                            of.write(driver_pinch+"\n")
                         elif appium_command[i] == 'driver.multi_perform_zoom()':
-                            of.write(driver_zoom+"\n"+"sleep(1)"+"\n")
+                            of.write(driver_zoom+"\n")
                         else:
-                            of.write(appium_command[i]+"\n"+"sleep(1)"+"\n")
+                            of.write(appium_command[i]+"\n")
                     else:
                         of.write("error")
                         break
     else:
         with open('tests/ctest/test.txt', "w") as of:
             of.write("test:" + "\n")
-            of.write("sleep(2)" + "\n")
             for i in range(len(raw_command)):
                     if raw_command[i] in appium_command[i]:
                         if appium_command[i] == 'driver.multi_perform_pinch()':
-                            of.write(driver_pinch+"\n"+"sleep(1)"+"\n")
+                            of.write(driver_pinch+"\n")
                         elif appium_command[i] == 'driver.multi_perform_zoom()':
-                            of.write(driver_zoom+"\n"+"sleep(1)"+"\n")
+                            of.write(driver_zoom+"\n")
                         else:
-                            of.write(appium_command[i]+"\n"+"sleep(1)"+"\n")
+                            of.write(appium_command[i]+"\n")
                     else:
                         of.write("error")
                         break

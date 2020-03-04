@@ -32,10 +32,10 @@ def appium_driver(desired_caps, appium_log, adb_log, adberr_log, event_num):
 
         # the number of loop
         i = 1
-
         while i < event_num:
             # sleep for get page_source
             sleep(2)
+            appium_command.append("sleep(2)")
             page_source = driver.page_source
 
             # get the current activity, package
