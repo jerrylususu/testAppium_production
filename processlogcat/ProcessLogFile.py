@@ -1,5 +1,3 @@
-# TODO 处理两个logfile 直接得到一个命令的序列即一个test（test的最后要拿到page source 便于比较）
-# TODO 把所有的test cases 都输出包括有触发的和没有触发的
 import re
 
 keywords = {
@@ -85,7 +83,7 @@ def transfer_log_to_raw_command(filter_adblog):
         return raw_command
 
 
-def check_and_complete_test(raw_command, appium_command, native_APIs):
+def check_and_complete_test(raw_command, appium_command, native_APIs, page_source):
     print(raw_command)
     if len(native_APIs) == 0:
         with open('tests/test/test.txt', "w") as of:
@@ -93,7 +91,6 @@ def check_and_complete_test(raw_command, appium_command, native_APIs):
                     if raw_command[i] in appium_command[i]:
                         if appium_command[i] == 'driver.multi_perform_pinch()':
                             of.write(driver_pinch+"\n")
-                            print("okk")
                         elif appium_command[i] == 'driver.multi_perform_zoom()':
                             of.write(driver_zoom+"\n")
                         else:
@@ -105,22 +102,24 @@ def check_and_complete_test(raw_command, appium_command, native_APIs):
         with open('tests/ctest/test.txt', "w") as of:
             for i in range(len(raw_command)):
                     if raw_command[i] in appium_command[i]:
-                        if appium_command == 'driver.multi_perform_pinch()':
+                        if appium_command[i] == 'driver.multi_perform_pinch()':
                             of.write(driver_pinch+"\n")
-                        elif appium_command == 'driver.multi_perform_zoom()':
+                        elif appium_command[i] == 'driver.multi_perform_zoom()':
                             of.write(driver_zoom+"\n")
                         else:
                             of.write(appium_command[i]+"\n")
                     else:
                         of.write("error")
                         break
+            of.write("\n" + native_APIs + "\n")
+            of.write("\n" + page_source)
 
 
 def generate_test(adblog, appium_command):
     native_APIs, page_source = check_whether_trigger_native('log/adblog.log', 'log/test.log')
     filter_adblogfile('log/test.log', 'log/filter_adblog.log')
     raw_command = transfer_log_to_raw_command('log/filter_adblog.log')
-    check_and_complete_test(raw_command, appium_command, native_APIs)
+    check_and_complete_test(raw_command, appium_command, native_APIs, page_source)
 
 
 if __name__ == '__main__':
