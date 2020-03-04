@@ -35,3 +35,11 @@
 + So what should I get correct test case.
 
     **just analyse adb logcat to get Appium command(test cases)**
+
++ after run test need we reboot the emunlator????
+
+    **do not know**
+    
++ 由于网络问题，页面不出来，那么有些按钮就找不出来，不能复现
+
+    **不知道怎么做，多运行几遍**

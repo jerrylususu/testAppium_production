@@ -20,14 +20,12 @@ def check_whether_trigger_native(file, out_file):
         with open(file, 'r', encoding='utf-8') as f:
             line = f.readline().strip('\n')
             while line:
-                if 'W System.err' in line:
+                if 'TARGET API FOUND' in line:
                     trigger_native_APIs.append(line)
                     line = f.readline()
                     while line and re.match(r"channel read: GET .*?/source", line) is None:
-                        if 'W System.err' in line:
+                        if 'TARGET API FOUND' in line:
                             trigger_native_APIs.append(line)
-                        else:
-                            break
                         line = f.readline().strip("\n")
 
                     while "AppiumResponse" not in line:
@@ -41,8 +39,8 @@ def check_whether_trigger_native(file, out_file):
 
 
 def filter_adblogfile(file, out_file):
-    with open(out_file, 'w') as of:
-        with open(file, 'r') as f:
+    with open(out_file, 'w', encoding='utf-8') as of:
+        with open(file, 'r', encoding='utf-8') as f:
             line = f.readline().strip('\n')
             while line:
                 line = f.readline().strip('\n')
@@ -60,7 +58,7 @@ def check_line(resource_id, line, raw_command):
     elif keywords['click'] in line:
         raw_command.append("driver.find_element_by_id({}).click()".format(resource_id))
     elif keywords['send text'] in line:
-        raw_command.append("driver.find_element_by_id({}).send_keys()".format(resource_id))
+        raw_command.append("driver.find_element_by_id({}).send_keys".format(resource_id))
     elif keywords['scroll'] in line:
         raw_command.append("driver.swipe")
     elif keywords['pinch/zoom'] in line:
@@ -87,32 +85,38 @@ def check_and_complete_test(raw_command, appium_command, native_APIs, page_sourc
     print(raw_command)
     if len(native_APIs) == 0:
         with open('tests/test/test.txt', "w") as of:
+            of.write("test:"+"\n")
+            of.write("sleep(2)"+"\n")
             for i in range(len(raw_command)):
                     if raw_command[i] in appium_command[i]:
                         if appium_command[i] == 'driver.multi_perform_pinch()':
-                            of.write(driver_pinch+"\n")
+                            of.write(driver_pinch+"\n"+"sleep(1)"+"\n")
                         elif appium_command[i] == 'driver.multi_perform_zoom()':
-                            of.write(driver_zoom+"\n")
+                            of.write(driver_zoom+"\n"+"sleep(1)"+"\n")
                         else:
-                            of.write(appium_command[i]+"\n")
+                            of.write(appium_command[i]+"\n"+"sleep(1)"+"\n")
                     else:
                         of.write("error")
                         break
     else:
         with open('tests/ctest/test.txt', "w") as of:
+            of.write("test:" + "\n")
+            of.write("sleep(2)" + "\n")
             for i in range(len(raw_command)):
                     if raw_command[i] in appium_command[i]:
                         if appium_command[i] == 'driver.multi_perform_pinch()':
-                            of.write(driver_pinch+"\n")
+                            of.write(driver_pinch+"\n"+"sleep(1)"+"\n")
                         elif appium_command[i] == 'driver.multi_perform_zoom()':
-                            of.write(driver_zoom+"\n")
+                            of.write(driver_zoom+"\n"+"sleep(1)"+"\n")
                         else:
-                            of.write(appium_command[i]+"\n")
+                            of.write(appium_command[i]+"\n"+"sleep(1)"+"\n")
                     else:
                         of.write("error")
                         break
-            of.write("\n" + native_APIs + "\n")
-            of.write("\n" + page_source)
+            of.write("native_APIs:"+"\n")
+            for native_API in native_APIs:
+                of.write(native_API + "\n")
+            of.write("page_source:"+"\n" + page_source)
 
 
 def generate_test(adblog, appium_command):

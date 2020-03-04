@@ -55,7 +55,7 @@ def generate_test_base_on_widget(driver, executable_elements, logging, i, appium
                                                  "send text", "text:", random_text))
                         print(form_string("event {}:".format(i), "widget", "resource_id:", resource_id, "operation:",
                                           "send text", "text:", random_text))
-                        appium_command.append("driver.find_element_by_id('{}').send_keys({})".format(resource_id, random_text))
+                        appium_command.append("driver.find_element_by_id('{}').send_keys('{}')".format(resource_id, random_text))
                         return 1
                     except Exception:
                         logging.error(form_string("event {}:".format(i), "widget", "Something went wrong when send",
