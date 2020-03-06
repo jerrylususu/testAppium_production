@@ -27,7 +27,7 @@ def appium_driver(desired_caps, event_num):
     log_file = open('log/adb.log', "w")
     err_file = open('log/adberr.log', "w")
     os.system("adb logcat -b all -c")
-    p = subprocess.Popen(["adb", "logcat", "appium:I", "System.err:W", "*:S"], stdout=log_file, stderr=err_file)
+    p = subprocess.Popen(["adb", "logcat", "appium:I", "System.err:W", "AndroidRuntime:E", "*:S"], stdout=log_file, stderr=err_file)
     appium_command = []
 
     try:
@@ -85,10 +85,10 @@ def appium_driver(desired_caps, event_num):
                     random_num = random.random()
                     if random_num > 0.2:
                         succeed = generate_test_base_on_widget(driver, executable_elements, logging, i, appium_command)
-                    elif random_num > 0.1:
-                        succeed = generate_test_on_screen(driver, logging, i, appium_command)
-                    else:
+                    elif random_num > 0:
                         succeed = generate_test_on_system(driver, logging, i, appium_command)
+                    else:
+                        succeed = generate_test_on_screen(driver, logging, i, appium_command)
                     if succeed:
                         i += 1
             else:

@@ -24,8 +24,8 @@ def check_whether_trigger_native(file, out_file):
             while line:
                 if 'TARGET API FOUND' in line:
                     trigger_native_APIs.append(line)
-                    line = f.readline()
-                    while line and re.match(r"channel read: GET .*?/source", line) is None:
+                    line = f.readline().strip("\n")
+                    while line and re.match(r".*? channel read: GET .*?/source", line) is None:
                         if 'TARGET API FOUND' in line:
                             trigger_native_APIs.append(line)
                         line = f.readline().strip("\n")
