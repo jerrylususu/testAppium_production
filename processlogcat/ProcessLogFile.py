@@ -1,3 +1,4 @@
+import os
 import re
 
 keywords = {
@@ -16,7 +17,7 @@ driver_zoom = "width = driver.get_window_size()['width']"+"\n"+"height = driver.
 
 def check_whether_trigger_native(file, out_file):
     trigger_native_APIs = []
-    page_source = "jj"
+    page_source = ""
     with open(out_file, 'w', encoding='utf-8') as of:
         with open(file, 'r', encoding='utf-8') as f:
             line = f.readline().strip('\n')
@@ -29,7 +30,7 @@ def check_whether_trigger_native(file, out_file):
                             trigger_native_APIs.append(line)
                         line = f.readline().strip("\n")
 
-                    while "AppiumResponse" not in line:
+                    while line and "AppiumResponse" not in line:
                         line = f.readline().strip("\n")
                     page_source = line
                     return trigger_native_APIs, page_source
@@ -84,10 +85,10 @@ def transfer_log_to_raw_command(filter_adblog):
         return raw_command
 
 
-def check_and_complete_test(raw_command, appium_command, native_APIs, page_source):
+def check_and_complete_test(raw_command, appium_command, native_APIs, page_source, i):
     print(raw_command)
     if len(native_APIs) == 0:
-        with open('tests/test/test.txt', "w") as of:
+        with open('tests/test/test{}.txt'.format(i), "w") as of:
             of.write("test:"+"\n")
             for i in range(len(raw_command)):
                     if raw_command[i] in appium_command[i]:
@@ -101,7 +102,7 @@ def check_and_complete_test(raw_command, appium_command, native_APIs, page_sourc
                         of.write("error")
                         break
     else:
-        with open('tests/ctest/test.txt', "w") as of:
+        with open('tests/ctest/test{}.txt'.format(i), "w") as of:
             of.write("test:" + "\n")
             for i in range(len(raw_command)):
                     if raw_command[i] in appium_command[i]:
@@ -120,12 +121,14 @@ def check_and_complete_test(raw_command, appium_command, native_APIs, page_sourc
             of.write("page_source:"+"\n" + page_source)
 
 
-def generate_test(adblog, appium_command):
-    native_APIs, page_source = check_whether_trigger_native('log/adblog.log', 'log/test.log')
-    filter_adblogfile('log/test.log', 'log/filter_adblog.log')
-    raw_command = transfer_log_to_raw_command('log/filter_adblog.log')
-    check_and_complete_test(raw_command, appium_command, native_APIs, page_source)
+def generate_test(appium_command, i):
+    native_APIs, page_source = check_whether_trigger_native('log/adb.log', 'log/test.log')
+    filter_adblogfile('log/test.log', 'log/filter_adb.log')
+    raw_command = transfer_log_to_raw_command('log/filter_adb.log')
+    check_and_complete_test(raw_command, appium_command, native_APIs, page_source, i)
+    os.remove('log/test.log')
+    os.remove('log/filter_adb.log')
 
 
 if __name__ == '__main__':
-    native, page = check_whether_trigger_native('log/adblog.log', 'log/out.log')
+    native, page = check_whether_trigger_native('log/adb.log', 'log/out.log')

@@ -14,12 +14,18 @@ from util import ParseXML
 from util.ProcessText import delete_text, form_string
 
 
-def appium_driver(desired_caps, appium_log, adb_log, adberr_log, event_num):
-    logging.basicConfig(level=logging.INFO, filename=appium_log, format="%(asctime)s [line:%(lineno)d] %(levelname)s %(message)s")
+def appium_driver(desired_caps, event_num):
+    logging.basicConfig(level=logging.INFO, filename='log/appium.log', format="%(asctime)s [line:%(lineno)d] %(levelname)s %(message)s")
     logging.info("logging app...")
 
-    log_file = open(adb_log, "w")
-    err_file = open(adberr_log, "w")
+    try:
+        delete_text('log/appium.log')
+    except FileNotFoundError:
+        logging.error("appium log is not found")
+        print("appium log is not found")
+
+    log_file = open('log/adb.log', "w")
+    err_file = open('log/adberr.log', "w")
     os.system("adb logcat -b all -c")
     p = subprocess.Popen(["adb", "logcat", "appium:I", "System.err:W", "*:S"], stdout=log_file, stderr=err_file)
     appium_command = []
@@ -29,6 +35,9 @@ def appium_driver(desired_caps, appium_log, adb_log, adberr_log, event_num):
 
         # the number of the continuous same activities
         same_act_num = []
+
+        # the number of the continuous same activities
+        diff_package = []
 
         # the number of loop
         i = 1
@@ -47,6 +56,9 @@ def appium_driver(desired_caps, appium_log, adb_log, adberr_log, event_num):
 
             # check current package
             if package == desired_caps['appPackage']:
+                # update the different package
+                diff_package = list()
+
                 # update the number of the continuous same activities
                 if len(same_act_num) == 0:
                     same_act_num.append(activity)
@@ -60,6 +72,8 @@ def appium_driver(desired_caps, appium_log, adb_log, adberr_log, event_num):
                 if len(same_act_num) >= 20:
                     try:
                         driver.press_keycode(4)
+                        logging.warning("the number of continuous same activities reach the upper limit")
+                        print("the number of continuous same activities reach the upper limit")
                         logging.info(form_string("event {}:".format(i), "system", "keycode:", str(4)))
                         print(form_string("event {}:".format(i), "system", "keycode:", str(4)))
                         appium_command.append("driver.press_keycode(4)")
@@ -78,7 +92,25 @@ def appium_driver(desired_caps, appium_log, adb_log, adberr_log, event_num):
                     if succeed:
                         i += 1
             else:
-                break
+                diff_package.append(package)
+                if len(diff_package) == 1:
+                    try:
+                        driver.press_keycode(4)
+                        logging.warning("the current package name is different from the given apk'")
+                        print("the current package name is different from the given apk'")
+                        logging.info(form_string("event {}:".format(i), "system", "keycode:", str(4)))
+                        print(form_string("event {}:".format(i), "system", "keycode:", str(4)))
+                        appium_command.append("driver.press_keycode(4)")
+                        i += 1
+                    except Exception:
+                        print(form_string("event {}:".format(i), "system", "Something went wrong when press", str(4)))
+                        logging.error(
+                            form_string("event {}:".format(i), "system", "Something went wrong when press", str(4)))
+                else:
+                    logging.warning("the current package name is still different from the given apk'")
+                    print("the current package name is still different from the given apk'")
+                    break
+
     finally:
         p.kill()
         p.wait()
