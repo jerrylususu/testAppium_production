@@ -85,7 +85,7 @@ def appium_driver(desired_caps, event_num):
                     random_num = random.random()
                     if random_num > 0.2:
                         succeed = generate_test_base_on_widget(driver, executable_elements, logging, i, appium_command)
-                    elif random_num > 0:
+                    elif random_num > 0.1:
                         succeed = generate_test_on_system(driver, logging, i, appium_command)
                     else:
                         succeed = generate_test_on_screen(driver, logging, i, appium_command)

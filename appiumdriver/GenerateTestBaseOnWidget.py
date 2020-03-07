@@ -80,9 +80,7 @@ def generate_test_base_on_widget(driver, executable_elements, logging, i, appium
                                                      "left scroll"))
                             print(form_string("event {}:".format(i), "widget", "resource_id:", resource_id, "operation:",
                                               "left scroll"))
-                            appium_command.append("driver.swipe({}, {}, {}, {}, {})".format(element_location_x+element_size_width*(1/4),
-                                element_location_y + element_size_height/2, element_location_x+element_size_width*(3/4),
-                                                                        element_location_y+element_size_height/2, 1000))
+                            appium_command.append("driver.swipe_left('{}')".format(resource_id))
                             return 1
                         except Exception:
                             logging.error(form_string("event {}:".format(i), "widget", "Something went wrong when left scroll",
@@ -99,9 +97,7 @@ def generate_test_base_on_widget(driver, executable_elements, logging, i, appium
                                          "right scroll"))
                             print(form_string("event {}:".format(i), "widget", "resource_id:", resource_id, "operation:",
                                               "right scroll"))
-                            appium_command.append("driver.swipe({}, {}, {}, {}, {})".format(element_location_x + element_size_width*(3/4),
-                                        element_location_y + element_size_height/2, element_location_x + element_size_width*(1/4),
-                                                                            element_location_y + element_size_height/2, 1000))
+                            appium_command.append("driver.swipe_right('{}')".format(resource_id))
                             return 1
                         except Exception:
                             logging.error(form_string("event {}:".format(i), "widget", "Something went wrong when right scroll",
@@ -118,9 +114,7 @@ def generate_test_base_on_widget(driver, executable_elements, logging, i, appium
                                                      "up scroll"))
                             print(form_string("event {}:".format(i), "widget", "resource_id:", resource_id, "operation:",
                                               "up scroll"))
-                            appium_command.append("driver.swipe({}, {}, {}, {}, {})".format(element_location_x+element_size_width/2,
-                                                                                            element_location_y+element_size_height*(3/4),
-                                         element_location_x+element_size_width/2, element_location_y+element_size_height*(1/4), 1000))
+                            appium_command.append("driver.swipe_up('{}')".format(resource_id))
                             return 1
                         except Exception:
                             logging.error(form_string("event {}:".format(i), "widget", "Something went wrong when up scroll",
@@ -137,9 +131,7 @@ def generate_test_base_on_widget(driver, executable_elements, logging, i, appium
                                          "down scroll"))
                             print(form_string("event {}:".format(i), "widget", "resource_id:", resource_id, "operation:",
                                               "down scroll"))
-                            appium_command.append("driver.swipe({}, {}, {}, {}, {})".format(element_location_x + element_size_width/2,
-                                                                                            element_location_y+element_size_height*(1/4),
-                                         element_location_x + element_size_width/2, element_location_y+element_size_height*(3/4), 1000))
+                            appium_command.append("driver.swipe_down('{}')".format(resource_id))
                             return 1
                         except Exception:
                             logging.error(form_string("event {}:".format(i), "widget", "Something went wrong when down scroll",
