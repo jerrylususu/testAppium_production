@@ -44,6 +44,17 @@
 
     **不知道怎么做，多运行几遍, 把sleep(2)加进去**
     
++ 问题：例如
+03-07 00:27:21.936  4957  5275 W System.err: TARGET API FOUND&android.media.MediaCodec.queueInputBuffer(int,int,int,long,int)
+03-07 00:27:21.961  4957  5275 W System.err: TARGET API FOUND&android.media.MediaCodec.queueInputBuffer(int,int,int,long,int)
+03-07 00:27:21.995  4957  5275 W System.err: TARGET API FOUND&android.media.MediaCodec.queueInputBuffer(int,int,int,long,int)
+03-07 00:27:22.017  4957  5275 W System.err: TARGET API FOUND&android.media.MediaCodec.queueInputBuffer(int,int,int,long,int)
+03-07 00:27:22.040  4957  5275 W System.err: TARGET API FOUND&android.media.MediaCodec.queueInputBuffer(int,int,int,long,int)
+03-07 00:27:22.055  4957  5275 W System.err: TARGET API FOUND&android.media.MediaCodec.queueInputBuffer(int,int,int,long,int)
+这种API是一直在触发的。。。。解决看一下是否已经有这个的test了，如果有就直接跳过。。
+如果没有出现再加进来。。
+  **解决了 看看这个API是否已经触发过**
+
 + 由于设置了当package变了就退出，就很容易退出
 + 明天要讲的  怎么选择的 target API
 + 一些人工的限制 2s钟  根据日志找出来了 test test长什么样子。。
