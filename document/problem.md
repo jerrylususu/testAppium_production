@@ -55,8 +55,12 @@
 如果没有出现再加进来。。
   **解决了 看看这个API是否已经触发过**
 
++ 问题：为啥按返回键之后相同activity的数量还是超出呢？？
+
++ 为啥会断开呢？？自己就结束了？？会回到主界面？退出app
+    **突然断开连接，topping uiautomator2 io.appium.uiautomator2.http io.appium.uiautomator2.server**
+    
+    
 + 由于设置了当package变了就退出，就很容易退出
-+ 明天要讲的  怎么选择的 target API
-+ 一些人工的限制 2s钟  根据日志找出来了 test test长什么样子。。
 + 接下来要做的 继续完善一下这个生成test cases的然后coverage该做了
 

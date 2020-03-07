@@ -6,11 +6,11 @@ from processlogcat.ProcessLogFile import generate_test
 
 # TODO 统计覆盖率 activity/widget
 i = 0
-while i < 10:
+while i < 1:
     desired_caps = config()
     try:
         print("\n{} test:\n".format(i))
-        appium_command = appium_driver(desired_caps, 100)
+        appium_command = appium_driver(desired_caps, 50)
         print(appium_command)
         generate_test(appium_command, i)
     except Exception:

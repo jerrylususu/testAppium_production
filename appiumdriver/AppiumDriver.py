@@ -67,30 +67,15 @@ def appium_driver(desired_caps, event_num):
                 else:
                     same_act_num = list()
                     same_act_num.append(activity)
-
-                # check the number of continuous same activities
-                if len(same_act_num) >= 20:
-                    try:
-                        driver.press_keycode(4)
-                        logging.warning("the number of continuous same activities reach the upper limit")
-                        print("the number of continuous same activities reach the upper limit")
-                        logging.info(form_string("event {}:".format(i), "system", "keycode:", str(4)))
-                        print(form_string("event {}:".format(i), "system", "keycode:", str(4)))
-                        appium_command.append("driver.press_keycode(4)")
-                        i += 1
-                    except Exception:
-                        print(form_string("event {}:".format(i), "system", "Something went wrong when press", str(4)))
-                        logging.error(form_string("event {}:".format(i), "system", "Something went wrong when press", str(4)))
+                random_num = random.random()
+                if random_num > 0.2:
+                    succeed = generate_test_base_on_widget(driver, executable_elements, logging, i, appium_command)
+                elif random_num > 0.1:
+                    succeed = generate_test_on_system(driver, logging, i, appium_command)
                 else:
-                    random_num = random.random()
-                    if random_num > 0.2:
-                        succeed = generate_test_base_on_widget(driver, executable_elements, logging, i, appium_command)
-                    elif random_num > 0.1:
-                        succeed = generate_test_on_system(driver, logging, i, appium_command)
-                    else:
-                        succeed = generate_test_on_screen(driver, logging, i, appium_command)
-                    if succeed:
-                        i += 1
+                    succeed = generate_test_on_screen(driver, logging, i, appium_command)
+                if succeed:
+                    i += 1
             else:
                 diff_package.append(package)
                 if len(diff_package) == 1:
