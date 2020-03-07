@@ -40,10 +40,10 @@ def appium_driver(desired_caps, event_num):
         diff_package = []
 
         # the number of loop
-        i = 1
+        i = 0
         while i < event_num:
             # sleep for get page_source
-            sleep(2)
+            sleep(1)
             appium_command.append("sleep(2)")
             page_source = driver.page_source
 
