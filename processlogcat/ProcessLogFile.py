@@ -47,7 +47,7 @@ def check_line(resource_id, line, raw_command):
     elif keywords['keycode'] in line:
         raw_command.append("driver.press_keycode")
     elif keywords['get_page_source'] in line:
-        raw_command.append("sleep(2)")
+        raw_command.append("sleep(1.5)")
     else:
         pass
     return resource_id
@@ -67,7 +67,7 @@ def transfer_log_to_raw_command(adblog):
     trigger_native_APIs = set()
     test_trigger_native_APIs = set()
     resource_id = ''
-    with open(adblog) as f:
+    with open(adblog, 'r', encoding='utf-8') as f:
         line = f.readline().strip('\n')
         while line:
             match = re.match(r".*?TARGET API FOUND&(.*?)$", line)
@@ -91,7 +91,7 @@ def transfer_log_to_raw_command(adblog):
 
 
 def check_and_complete_test(complete_command, appium_command, i):
-    with open('tests/test/test_{}.txt'.format(i), "w") as of:
+    with open('tests/test/test_{}.txt'.format(i), "w", encoding='utf-8') as of:
         of.write("complete_test:"+"\n")
         for k in range(len(complete_command)):
                 if complete_command[k] in appium_command[k]:
@@ -110,7 +110,7 @@ def check_and_complete_test(complete_command, appium_command, i):
 
 
 def check_and_complete_comp_test(comp_test, complete_command, appium_command, i):
-    with open('tests/ctest/ctest_{}.txt'.format(i), "w") as f:
+    with open('tests/ctest/ctest_{}.txt'.format(i), "w", encoding='utf-8') as f:
         for j in range(len(comp_test)):
             raw_command = comp_test[j][0]
             native_APIs = comp_test[j][1]

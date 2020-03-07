@@ -43,8 +43,8 @@ def appium_driver(desired_caps, event_num):
         i = 0
         while i < event_num:
             # sleep for get page_source
-            sleep(1)
-            appium_command.append("sleep(2)")
+            sleep(1.5)
+            appium_command.append("sleep(1.5)")
             page_source = driver.page_source
 
             # get the current activity, package
