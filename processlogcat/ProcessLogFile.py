@@ -61,10 +61,9 @@ def check_line_operation(line):
         return False
 
 
-def transfer_log_to_raw_command(adblog):
+def transfer_log_to_raw_command(adblog, trigger_native_APIs):
     comp_test = []
     raw_command = []
-    trigger_native_APIs = set()
     test_trigger_native_APIs = set()
     resource_id = ''
     with open(adblog, 'r', encoding='utf-8') as f:
@@ -151,8 +150,8 @@ def check_and_complete_comp_test(comp_test, complete_command, appium_command, i)
                 break
 
 
-def generate_test(appium_command, i):
-    comp_test, complete_command = transfer_log_to_raw_command('log/adb.log')
+def generate_test(appium_command, i, trigger_native_APIs):
+    comp_test, complete_command = transfer_log_to_raw_command('log/adb.log', trigger_native_APIs)
     if comp_test:
         check_and_complete_comp_test(comp_test, complete_command, appium_command, i)
     else:
