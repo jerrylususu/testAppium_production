@@ -12,20 +12,26 @@ desired_caps['appActivity'] = 'de.danoeh.antennapod.activity.SplashActivity'
 desired_caps['eventTimings'] = True
 desired_caps['automationName'] = 'UIAutomator2'
 i = 0
+# record target APIs triggered
 trigger_native_APIs = set()
+# record activities triggered
+activities = set()
+# record widgets triggered
+widgets = set()
+# record widgets in page_source
+widgets_page_source = set()
+
 while i < 3:
     try:
         print("\n{} test:\n".format(i))
-        appium_command = appium_driver(desired_caps, 50)
+        appium_command = appium_driver(desired_caps, 50, activities, widgets, widgets_page_source)
         print(appium_command)
         generate_test(appium_command, i, trigger_native_APIs)
     except Exception:
         print("error: {}".format(i) + "test")
     i += 1
     sleep(5)
+print(activities)
+print(widgets)
+print(widgets_page_source)
 
-
-# TODO coverage
-# TODO 解析apk拿到package，activity那些信息
-# TODO 将这个做成一个可以自动化运行的程序。。
-# TODO 给同学分配任务 卢自动化+筛选  余问一下API怎么分类80000多也太多了吧   张问问进展给他test的一个txt。。

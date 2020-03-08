@@ -14,7 +14,7 @@ from util import ParseXML
 from util.ProcessText import delete_text, form_string
 
 
-def appium_driver(desired_caps, event_num):
+def appium_driver(desired_caps, event_num, activities, widgets, widgets_page_source):
     logging.basicConfig(level=logging.INFO, filename='log/appium.log', format="%(asctime)s [line:%(lineno)d] %(levelname)s %(message)s")
     logging.info("logging app...")
 
@@ -51,8 +51,15 @@ def appium_driver(desired_caps, event_num):
             activity = driver.current_activity
             package = driver.current_package
 
+            # add activity to triggered activities
+            activities.add(activity)
+
             # get package name and executable widgets
             executable_elements = ParseXML.parseXml(page_source)
+
+            # add excutable_elements to widgets_page_source
+            for excutable_ele in executable_elements:
+                widgets_page_source.add(excutable_ele.get('resource-id'))
 
             # check current package
             if package == desired_caps['appPackage']:
@@ -69,7 +76,7 @@ def appium_driver(desired_caps, event_num):
                     same_act_num.append(activity)
                 random_num = random.random()
                 if random_num > 0.2:
-                    succeed = generate_test_base_on_widget(driver, executable_elements, logging, i, appium_command)
+                    succeed = generate_test_base_on_widget(driver, executable_elements, logging, i, appium_command, widgets)
                 elif random_num > 0.1:
                     succeed = generate_test_on_system(driver, logging, i, appium_command)
                 else:
@@ -94,7 +101,12 @@ def appium_driver(desired_caps, event_num):
                 else:
                     logging.warning("the current package name is still different from the given apk'")
                     print("the current package name is still different from the given apk'")
+
                     break
+        driver.quit()
+
+    except:
+        print("remote collection went wrong")
 
     finally:
         p.kill()

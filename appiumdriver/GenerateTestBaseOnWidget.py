@@ -4,7 +4,7 @@ import string
 from util.ProcessText import form_string
 
 
-def generate_test_base_on_widget(driver, executable_elements, logging, i, appium_command):
+def generate_test_base_on_widget(driver, executable_elements, logging, i, appium_command, widgets):
     if len(executable_elements) == 0:
         print(form_string("widget", "There is no executable element"))
         logging.warning((form_string("widget", "There is no executable element")))
@@ -12,6 +12,7 @@ def generate_test_base_on_widget(driver, executable_elements, logging, i, appium
     else:
         selected_ele = random.choice(executable_elements)
         resource_id = selected_ele.get('resource-id')
+        widgets.add(resource_id)
         if resource_id == '':
             try:
                 for node in selected_ele.iter():
