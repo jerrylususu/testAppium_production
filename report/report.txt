@@ -1,0 +1,8 @@
+triggered activities:
+{'.activity.PreferenceActivity', '.activity.MainActivity'}
+triggered executable elements:
+{'de.danoeh.antennapod:id/nav_settings', 'android:id/switch_widget', 'android:id/button1', 'de.danoeh.antennapod:id/queue_lock', 'de.danoeh.antennapod:id/recycler_view', 'de.danoeh.antennapod:id/refresh_item', 'android:id/text1', None}
+all achievable executable elements
+{'de.danoeh.antennapod:id/nav_settings', 'android:id/switch_widget', 'android:id/text1', 'de.danoeh.antennapod:id/checkbox_do_not_show_again', 'de.danoeh.antennapod:id/search', 'android:id/button1', 'android:id/button2', 'de.danoeh.antennapod:id/queue_lock', 'de.danoeh.antennapod:id/recycler_view', 'de.danoeh.antennapod:id/combinedFeedSearchBox', 'de.danoeh.antennapod:id/refresh_item', 'de.danoeh.antennapod:id/search_card', 'de.danoeh.antennapod:id/select_dialog_listview', 'de.danoeh.antennapod:id/nav_list', None, 'de.danoeh.antennapod:id/search_icon', 'de.danoeh.antennapod:id/discover_more'}
+widget coverage:
+0.47058823529411764
