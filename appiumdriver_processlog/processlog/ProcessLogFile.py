@@ -1,7 +1,7 @@
 import re
 
 keywords = {
-               'find elemnt': 'find element command using',
+               'find elemnt': 'Find element command',
                'click': 'Click element command',
                'send text': 'send keys to element command',
                'scroll': 'JSON Payload',
@@ -32,22 +32,42 @@ def complete_swipe_command(raw_command):
     return complete_command
 
 
-def check_line(resource_id, line, raw_command):
+def check_line(resource_id, line, raw_command, f):
     if keywords['find elemnt'] in line:
         pattern = re.compile(r".*?selector ('.*?').*?")
         resource_id = pattern.match(line)[1]
     elif keywords['click'] in line:
-        raw_command.append("driver.find_element_by_id({}).click()".format(resource_id))
+        while "AppiumResponse" not in line:
+            line = f.readline()
+        if "AppiumResponse" in line:
+            if "\"value\":null" in line:
+                raw_command.append("driver.find_element_by_id({}).click()".format(resource_id))
     elif keywords['send text'] in line:
-        raw_command.append("driver.find_element_by_id({}).send_keys".format(resource_id))
+        while "AppiumResponse" not in line:
+            line = f.readline()
+        if "AppiumResponse" in line:
+            if "\"value\":null" in line:
+                raw_command.append("driver.find_element_by_id({}).send_keys".format(resource_id))
     elif keywords['scroll'] in line:
-        raw_command.append("driver.swipe")
+        while "AppiumResponse" not in line:
+            line = f.readline()
+        if "AppiumResponse" in line:
+            if "\"value\":null" in line:
+                raw_command.append("driver.swipe")
     elif keywords['pinch/zoom'] in line:
-        raw_command.append("multi_perform")
+        while "AppiumResponse" not in line:
+            line = f.readline()
+        if "AppiumResponse" in line:
+            if "\"value\":null" in line:
+                raw_command.append("multi_perform")
     elif keywords['keycode'] in line:
-        raw_command.append("driver.press_keycode")
+        while "AppiumResponse" not in line:
+            line = f.readline()
+        if "AppiumResponse" in line:
+            if "\"value\":null" in line:
+                raw_command.append("driver.press_keycode")
     elif keywords['get_page_source'] in line:
-        raw_command.append("sleep(1.5)")
+        raw_command.append("sleep")
     else:
         pass
     return resource_id
@@ -77,14 +97,14 @@ def transfer_log_to_raw_command(adblog, trigger_native_APIs):
                         API = match[1]
                         test_trigger_native_APIs.add(API)
                     else:
-                        resource_id = check_line(resource_id, line, raw_command)
+                        resource_id = check_line(resource_id, line, raw_command, f)
                     line = f.readline().strip("\n")
                 if len(test_trigger_native_APIs-trigger_native_APIs) != 0:
                     comp_test.append((raw_command, test_trigger_native_APIs))
                 trigger_native_APIs = trigger_native_APIs | test_trigger_native_APIs
                 test_trigger_native_APIs = set()
 
-            resource_id = check_line(resource_id, line, raw_command)
+            resource_id = check_line(resource_id, line, raw_command, f)
             line = f.readline().strip('\n')
         return comp_test, raw_command
 
@@ -152,6 +172,7 @@ def check_and_complete_comp_test(comp_test, complete_command, appium_command, i)
 
 def generate_test(appium_command, i, trigger_native_APIs):
     comp_test, complete_command = transfer_log_to_raw_command('log/adb.log', trigger_native_APIs)
+    print(complete_command)
     if comp_test:
         check_and_complete_comp_test(comp_test, complete_command, appium_command, i)
     else:
@@ -159,5 +180,8 @@ def generate_test(appium_command, i, trigger_native_APIs):
 
 
 if __name__ == '__main__':
-    appium_command = ['sleep(2)', "driver.find_element_by_id('de.danoeh.antennapod:id/discovery_cover').click()", 'sleep(2)', "driver.find_element_by_id('de.danoeh.antennapod:id/advanced_search').click()", 'sleep(2)', "driver.find_element_by_id('android:id/title').click()", 'sleep(2)', 'driver.press_keycode', 'sleep(2)', 'driver.press_keycode', 'sleep(2)', "driver.find_element_by_id('de.danoeh.antennapod:id/imgvCover').click()", 'sleep(2)', "driver.find_element_by_id('de.danoeh.antennapod:id/butSubscribe').click()", 'sleep(2)', 'sleep(2)', "driver.find_element_by_id('de.danoeh.antennapod:id/butShowSettings').click()", 'sleep(2)', "driver.find_element_by_id('de.danoeh.antennapod:id/icon_frame').click()", 'sleep(2)', "driver.find_element_by_id('de.danoeh.antennapod:id/icon_frame').click()", 'sleep(2)', "driver.find_element_by_id('android:id/title').click()", 'sleep(2)', "driver.find_element_by_id('de.danoeh.antennapod:id/icon_frame').click()", 'sleep(2)', 'driver.press_keycode', 'sleep(2)', "driver.find_element_by_id('de.danoeh.antennapod:id/container').click()", 'sleep(2)', "driver.find_element_by_id('de.danoeh.antennapod:id/butAction2').click()", 'sleep(2)', "driver.find_element_by_id('de.danoeh.antennapod:id/txtvPodcastTitle').click()", 'sleep(2)', "driver.find_element_by_id('de.danoeh.antennapod:id/butPlaybackSpeed').click()", 'sleep(2)', "driver.swipe_up('aaa')", 'sleep(2)', "driver.find_element_by_id('de.danoeh.antennapod:id/butPlay').click()", 'sleep(2)', "driver.find_element_by_id('de.danoeh.antennapod:id/page_indicator').click()", 'sleep(2)', "driver.find_element_by_id('de.danoeh.antennapod:id/set_sleeptimer_item').click()", 'sleep(2)', "driver.find_element_by_id('de.danoeh.antennapod:id/setSleeptimerButton').click()", 'sleep(2)', "driver.find_element_by_id('de.danoeh.antennapod:id/disableSleeptimerButton').click()", 'sleep(2)', "driver.find_element_by_id('de.danoeh.antennapod:id/cbShakeToReset').click()", 'sleep(2)', 'driver.press_keycode', 'sleep(2)', 'driver.press_keycode', 'sleep(2)', "driver.find_element_by_id('de.danoeh.antennapod:id/butSkip').click()", 'sleep(2)', "driver.find_element_by_id('de.danoeh.antennapod:id/container').click()", 'sleep(2)', 'sleep(2)', "driver.find_element_by_id('de.danoeh.antennapod:id/butAction2').click()", 'sleep(2)', 'sleep(2)', 'sleep(2)', "driver.find_element_by_id('de.danoeh.antennapod:id/audio_controls').click()", 'sleep(2)', "driver.find_element_by_id('de.danoeh.antennapod:id/skipSilence').click()", 'sleep(2)', "driver.find_element_by_id('android:id/button1').click()", 'sleep(2)', "driver.find_element_by_id('de.danoeh.antennapod:id/add_to_favorites_item').click()", 'sleep(2)', 'sleep(2)', "driver.find_element_by_id('de.danoeh.antennapod:id/butSkip').click()", 'sleep(2)', 'sleep(2)', "driver.find_element_by_id('de.danoeh.antennapod:id/refresh_item').click()", 'sleep(2)', "driver.find_element_by_id('de.danoeh.antennapod:id/secondaryActionButton').click()", 'sleep(2)', "driver.find_element_by_id('de.danoeh.antennapod:id/butShowInfo').click()", 'sleep(2)', "driver.find_element_by_id('de.danoeh.antennapod:id/visit_website_item').click()", 'sleep(2)', 'driver.press_keycode', 'sleep(2)']
-    generate_test(appium_command, 2)
+    # appium_command = ['sleep(2)', "driver.find_element_by_id('de.danoeh.antennapod:id/discovery_cover').click()", 'sleep(2)', "driver.find_element_by_id('de.danoeh.antennapod:id/advanced_search').click()", 'sleep(2)', "driver.find_element_by_id('android:id/title').click()", 'sleep(2)', 'driver.press_keycode', 'sleep(2)', 'driver.press_keycode', 'sleep(2)', "driver.find_element_by_id('de.danoeh.antennapod:id/imgvCover').click()", 'sleep(2)', "driver.find_element_by_id('de.danoeh.antennapod:id/butSubscribe').click()", 'sleep(2)', 'sleep(2)', "driver.find_element_by_id('de.danoeh.antennapod:id/butShowSettings').click()", 'sleep(2)', "driver.find_element_by_id('de.danoeh.antennapod:id/icon_frame').click()", 'sleep(2)', "driver.find_element_by_id('de.danoeh.antennapod:id/icon_frame').click()", 'sleep(2)', "driver.find_element_by_id('android:id/title').click()", 'sleep(2)', "driver.find_element_by_id('de.danoeh.antennapod:id/icon_frame').click()", 'sleep(2)', 'driver.press_keycode', 'sleep(2)', "driver.find_element_by_id('de.danoeh.antennapod:id/container').click()", 'sleep(2)', "driver.find_element_by_id('de.danoeh.antennapod:id/butAction2').click()", 'sleep(2)', "driver.find_element_by_id('de.danoeh.antennapod:id/txtvPodcastTitle').click()", 'sleep(2)', "driver.find_element_by_id('de.danoeh.antennapod:id/butPlaybackSpeed').click()", 'sleep(2)', "driver.swipe_up('aaa')", 'sleep(2)', "driver.find_element_by_id('de.danoeh.antennapod:id/butPlay').click()", 'sleep(2)', "driver.find_element_by_id('de.danoeh.antennapod:id/page_indicator').click()", 'sleep(2)', "driver.find_element_by_id('de.danoeh.antennapod:id/set_sleeptimer_item').click()", 'sleep(2)', "driver.find_element_by_id('de.danoeh.antennapod:id/setSleeptimerButton').click()", 'sleep(2)', "driver.find_element_by_id('de.danoeh.antennapod:id/disableSleeptimerButton').click()", 'sleep(2)', "driver.find_element_by_id('de.danoeh.antennapod:id/cbShakeToReset').click()", 'sleep(2)', 'driver.press_keycode', 'sleep(2)', 'driver.press_keycode', 'sleep(2)', "driver.find_element_by_id('de.danoeh.antennapod:id/butSkip').click()", 'sleep(2)', "driver.find_element_by_id('de.danoeh.antennapod:id/container').click()", 'sleep(2)', 'sleep(2)', "driver.find_element_by_id('de.danoeh.antennapod:id/butAction2').click()", 'sleep(2)', 'sleep(2)', 'sleep(2)', "driver.find_element_by_id('de.danoeh.antennapod:id/audio_controls').click()", 'sleep(2)', "driver.find_element_by_id('de.danoeh.antennapod:id/skipSilence').click()", 'sleep(2)', "driver.find_element_by_id('android:id/button1').click()", 'sleep(2)', "driver.find_element_by_id('de.danoeh.antennapod:id/add_to_favorites_item').click()", 'sleep(2)', 'sleep(2)', "driver.find_element_by_id('de.danoeh.antennapod:id/butSkip').click()", 'sleep(2)', 'sleep(2)', "driver.find_element_by_id('de.danoeh.antennapod:id/refresh_item').click()", 'sleep(2)', "driver.find_element_by_id('de.danoeh.antennapod:id/secondaryActionButton').click()", 'sleep(2)', "driver.find_element_by_id('de.danoeh.antennapod:id/butShowInfo').click()", 'sleep(2)', "driver.find_element_by_id('de.danoeh.antennapod:id/visit_website_item').click()", 'sleep(2)', 'driver.press_keycode', 'sleep(2)']
+    # generate_test(appium_command, 2)
+    comp_test, raw_command = transfer_log_to_raw_command('log/adb.log', set())
+    print(comp_test)
+    print(raw_command)

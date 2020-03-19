@@ -1,7 +1,7 @@
 from time import sleep
 
-from appiumdriver.AppiumDriver import appium_driver
-from processlogcat.ProcessLogFile import generate_test
+from appiumdriver_processlog.appiumdriver.AppiumDriver import appium_driver
+from appiumdriver_processlog.processlog.ProcessLogFile import generate_test
 
 desired_caps = {}
 desired_caps['platformName'] = 'Android'
@@ -34,4 +34,3 @@ while i < 3:
 print(activities)
 print(widgets)
 print(widgets_page_source)
-
