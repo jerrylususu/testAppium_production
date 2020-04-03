@@ -2,6 +2,8 @@
 import os
 import random
 import subprocess
+import sys
+import traceback
 from time import sleep
 
 from appium import webdriver
@@ -142,6 +144,8 @@ def appium_driver(desired_caps, event_num, activities, widgets, widgets_page_sou
                     break
         driver.quit()
     except Exception as excp:
+        exc_type, exc_value, exc_traceback_obj = sys.exc_info()
+        traceback.print_tb(exc_traceback_obj)
         print("wrong!!", excp)
 
     finally:

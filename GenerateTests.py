@@ -1,3 +1,4 @@
+import apkutils
 from time import sleep
 import traceback
 import sys
@@ -22,13 +23,19 @@ adb_exe_path="/home/jerrylu/adb/platform-tools/adb"
 adb_connection_str="localhost:" + str(adb_port)  # this is generated at runtime
 apk_path="/home/jerrylu/mineapk/de.danoeh.antennapod.apk"
 
+# analyse apk
+apk = apkutils.APK(apk_path)
+main_activity = apk.get_main_activity()
+package = apk.get_manifest()['@package']
+SDKversion = apk.get_manifest()['@android:compileSdkVersionCodename']
+
 # appium desired caps
 desired_caps = {}
 desired_caps['platformName'] = 'Android'
-desired_caps['platformVersion'] = '8.1'
+desired_caps['platformVersion'] = SDKversion
 desired_caps['deviceName'] = 'emulator-5554' # This should be fine... They are all called `emulator-5554` internally inside container
-desired_caps['appPackage'] = 'de.danoeh.antennapod'
-desired_caps['appActivity'] = 'de.danoeh.antennapod.activity.SplashActivity'
+desired_caps['appPackage'] = package
+desired_caps['appActivity'] = main_activity
 desired_caps['eventTimings'] = True
 desired_caps['automationName'] = 'UIAutomator2'
 
@@ -63,7 +70,6 @@ while test_num < 3:
     try:
         print("\n{} test:\n".format(test_num))
         appium_command = appium_driver(desired_caps, 10, activities, widgets, widgets_page_source, test_num, remote_addr=remote_addr, adb_exe_path=adb_exe_path)
-        # appium_command = appium_driver(desired_caps, 10, activities, widgets, widgets_page_source, test_num)
         print("\n"+"appium_command:")
         print(appium_command)
         generate_test(appium_command, test_num, trigger_native_APIs)
