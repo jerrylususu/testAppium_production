@@ -89,17 +89,17 @@ def appium_driver(desired_caps, event_num, activities, widgets, widgets_page_sou
                         widgets_page_source.add(excutable_ele.get('resource-id'))
                     generate_test_base_on_widget(driver, executable_elements, logging, i, appium_command, widgets)
 
-                elif random_num > 0.1:
+                else:
                     print("{+} start event based on system")
                     logging.info("{+} start event based on system")
 
                     generate_test_on_system(driver, logging, i, appium_command)
 
-                else:
-                    print("{+} start event based on screen")
-                    logging.info("{+} start event based on screen")
-
-                    generate_test_on_screen(driver, logging, i, appium_command)
+                # else:
+                #     print("{+} start event based on screen")
+                #     logging.info("{+} start event based on screen")
+                #
+                #     generate_test_on_screen(driver, logging, i, appium_command)
 
                 i += 1
 
