@@ -10,10 +10,10 @@ from appium import webdriver
 import logging
 
 from appiumdriver_processlog.appiumdriver.GenerateTestBaseOnWidget import generate_test_base_on_widget
-from appiumdriver_processlog.appiumdriver.GenerateTestOnScreen import generate_test_on_screen
 from appiumdriver_processlog.appiumdriver.GenerateTestOnSystem import generate_test_on_system
 from appiumdriver_processlog.appiumdriver.util import ParseXML
 from appiumdriver_processlog.appiumdriver.util.ProcessText import form_string
+
 
 def appium_driver(desired_caps, event_num, activities, widgets, widgets_page_source, test_num, remote_addr='http://localhost:4723/wb/hub', adb_exe_path="adb"):
     logging.basicConfig(level=logging.INFO, filename="log/appium.log", format="%(asctime)s [line:%(lineno)d] %(levelname)s %(message)s")
@@ -64,14 +64,6 @@ def appium_driver(desired_caps, event_num, activities, widgets, widgets_page_sou
                 # update the different package
                 diff_package = list()
 
-                # update the number of the continuous same activities
-                if len(same_act_num) == 0:
-                    same_act_num.append(activity)
-                elif activity == same_act_num[-1]:
-                    same_act_num.append(activity)
-                else:
-                    same_act_num = list()
-                    same_act_num.append(activity)
                 random_num = random.random()
                 # if len(same_act_num) < 50:
                 if random_num > 0.2:
@@ -97,29 +89,8 @@ def appium_driver(desired_caps, event_num, activities, widgets, widgets_page_sou
 
                     generate_test_on_system(driver, logging, i, appium_command)
 
-                # else:
-                #     print("{+} start event based on screen")
-                #     logging.info("{+} start event based on screen")
-                #
-                #     generate_test_on_screen(driver, logging, i, appium_command)
-
                 i += 1
 
-                # else:
-                #     try:
-                #         driver.press_keycode(4)
-                #         logging.warning("{w} the number of continuous same activities reaches 30")
-                #         print("{w} the number of continuous same activities reaches 30")
-                #
-                #         logging.info(form_string("{~}", "event {}:".format(i), "system", "keycode:", str(4)))
-                #         print(form_string("{~}", "event {}:".format(i), "system", "keycode:", str(4)))
-                #         appium_command.append("driver.press_keycode(4)")
-                #     except Exception:
-                #         print(form_string("{w}", "event {}:".format(i), "system", "Something went wrong when press", str(4)))
-                #         logging.error(
-                #             form_string("{w}", "event {}:".format(i), "system", "Something went wrong when press", str(4)))
-                #     finally:
-                #         i += 1
             else:
                 diff_package.append(package)
                 if len(diff_package) == 1:
