@@ -1,8 +1,8 @@
 triggered activities:
 {'.activity.PreferenceActivity', '.activity.MainActivity'}
 triggered executable elements:
-{'de.danoeh.antennapod:id/nav_settings', 'android:id/switch_widget', 'android:id/button1', 'de.danoeh.antennapod:id/queue_lock', 'de.danoeh.antennapod:id/recycler_view', 'de.danoeh.antennapod:id/refresh_item', 'android:id/text1', None}
+{'', 'android:id/button2', 'de.danoeh.antennapod:id/advanced_search', 'de.danoeh.antennapod:id/etxtFeedurl', 'de.danoeh.antennapod:id/action_search', 'de.danoeh.antennapod:id/recycler_view', 'android:id/text1', 'de.danoeh.antennapod:id/search_icon'}
 all achievable executable elements
-{'de.danoeh.antennapod:id/nav_settings', 'android:id/switch_widget', 'android:id/text1', 'de.danoeh.antennapod:id/checkbox_do_not_show_again', 'de.danoeh.antennapod:id/search', 'android:id/button1', 'android:id/button2', 'de.danoeh.antennapod:id/queue_lock', 'de.danoeh.antennapod:id/recycler_view', 'de.danoeh.antennapod:id/combinedFeedSearchBox', 'de.danoeh.antennapod:id/refresh_item', 'de.danoeh.antennapod:id/search_card', 'de.danoeh.antennapod:id/select_dialog_listview', 'de.danoeh.antennapod:id/nav_list', None, 'de.danoeh.antennapod:id/search_icon', 'de.danoeh.antennapod:id/discover_more'}
+{'', 'android:id/button2', 'de.danoeh.antennapod:id/butConfirm', 'de.danoeh.antennapod:id/refresh_item', 'de.danoeh.antennapod:id/advanced_search', 'de.danoeh.antennapod:id/viewpager', 'de.danoeh.antennapod:id/etxtFeedurl', 'de.danoeh.antennapod:id/combinedFeedSearchBox', 'de.danoeh.antennapod:id/action_search', 'de.danoeh.antennapod:id/nav_settings', 'de.danoeh.antennapod:id/btn_opml_import', 'de.danoeh.antennapod:id/recycler_view', 'android:id/button1', 'de.danoeh.antennapod:id/search', 'de.danoeh.antennapod:id/discover_more', 'android:id/text1', 'de.danoeh.antennapod:id/search_src_text', 'de.danoeh.antennapod:id/search_card', 'de.danoeh.antennapod:id/search_icon'}
 widget coverage:
-0.47058823529411764
+0.42105263157894735
