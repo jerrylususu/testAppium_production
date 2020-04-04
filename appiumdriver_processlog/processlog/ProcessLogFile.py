@@ -81,8 +81,8 @@ def check_line_operation(line):
         return False
 
 
-def transfer_log_to_raw_command(adblog):
-    trigger_native_APIs = set()
+def transfer_log_to_raw_command(adblog, trigger_target_APIs):
+    trigger_target_APIs_one_test = set()
     comp_test = []
     raw_command = []
     test_trigger_native_APIs = set()
@@ -100,13 +100,14 @@ def transfer_log_to_raw_command(adblog):
                     else:
                         resource_id = check_line(resource_id, line, raw_command, f)
                     line = f.readline().strip("\n")
-                if len(test_trigger_native_APIs-trigger_native_APIs) != 0:
+                if len(test_trigger_native_APIs-trigger_target_APIs_one_test) != 0:
                     comp_test.append((raw_command, test_trigger_native_APIs))
-                trigger_native_APIs = trigger_native_APIs | test_trigger_native_APIs
+                trigger_target_APIs_one_test = trigger_target_APIs_one_test | test_trigger_native_APIs
                 test_trigger_native_APIs = set()
 
             resource_id = check_line(resource_id, line, raw_command, f)
             line = f.readline().strip('\n')
+        trigger_target_APIs = trigger_target_APIs | trigger_target_APIs_one_test
         return comp_test, raw_command
 
 
@@ -171,8 +172,8 @@ def check_and_complete_comp_test(comp_test, complete_command, appium_command, i)
                 break
 
 
-def generate_test(appium_command, i):
-    comp_test, complete_command = transfer_log_to_raw_command('log/adb.log')
+def generate_test(appium_command, i, trigger_target_APIs):
+    comp_test, complete_command = transfer_log_to_raw_command('log/adb.log', trigger_target_APIs)
     print(complete_command)
     if comp_test:
         check_and_complete_comp_test(comp_test, complete_command, appium_command, i)

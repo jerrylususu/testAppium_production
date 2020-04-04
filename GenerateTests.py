@@ -41,6 +41,8 @@ desired_caps['automationName'] = 'UIAutomator2'
 
 # test related data containers
 test_num = 0
+# record target APIs triggered
+trigger_target_APIs = set()
 # record activities triggered
 activities = set()
 # record widgets triggered
@@ -70,7 +72,7 @@ while test_num < 3:
         appium_command = appium_driver(desired_caps, 10, activities, widgets, widgets_page_source, test_num, remote_addr=remote_addr, adb_exe_path=adb_exe_path)
         print("\n"+"appium_command:")
         print(appium_command)
-        generate_test(appium_command, test_num)
+        generate_test(appium_command, test_num, trigger_target_APIs)
     except Exception as e:
         print(e)
         print("error: {}".format(test_num) + "test")
@@ -88,6 +90,8 @@ print("triggered activities:")
 print(activities)
 print("triggered executable elements:")
 print(widgets)
+print("triggered target APIs:")
+print(trigger_target_APIs)
 print("all achievable executable elements")
 print(widgets_page_source)
 print("widget coverage:")
@@ -99,6 +103,8 @@ with open('report/report.txt', "w") as f:
     f.write(str(activities)+"\n")
     f.write("triggered executable elements:"+"\n")
     f.write(str(widgets)+"\n")
+    f.write("triggered target APIs:"+"\n")
+    f.write(str(trigger_target_APIs)+"\n")
     f.write("all achievable executable elements"+"\n")
     f.write(str(widgets_page_source)+"\n")
     f.write("widget coverage:"+"\n")
