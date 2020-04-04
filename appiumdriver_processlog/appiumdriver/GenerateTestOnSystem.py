@@ -11,7 +11,7 @@ def generate_test_on_system(driver, logging, i, appium_command):
     KEYCODE_VOLUME_DOWN: 25
     KEYCODE_MENU: 82
     '''
-    keycode_list = [4, 24, 25, 82]
+    keycode_list = [4]
     selected_key = random.choice(keycode_list)
     try:
         driver.press_keycode(selected_key)
