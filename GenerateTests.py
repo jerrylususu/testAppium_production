@@ -41,8 +41,6 @@ desired_caps['automationName'] = 'UIAutomator2'
 
 # test related data containers
 test_num = 0
-# record target APIs triggered
-trigger_native_APIs = set()
 # record activities triggered
 activities = set()
 # record widgets triggered
@@ -72,7 +70,7 @@ while test_num < 3:
         appium_command = appium_driver(desired_caps, 10, activities, widgets, widgets_page_source, test_num, remote_addr=remote_addr, adb_exe_path=adb_exe_path)
         print("\n"+"appium_command:")
         print(appium_command)
-        generate_test(appium_command, test_num, trigger_native_APIs)
+        generate_test(appium_command, test_num)
     except Exception as e:
         print(e)
         print("error: {}".format(test_num) + "test")

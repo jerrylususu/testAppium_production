@@ -124,3 +124,9 @@ def appium_driver(desired_caps, event_num, activities, widgets, widgets_page_sou
         p.wait()
         logging.info(form_string("appium commands:", str(appium_command)))
         return appium_command
+
+# TODO 不进行筛选  有多少出多少  看看还有重复的问题嘛  多跑几个apk 试试
+# TODO 把GitHub上的传到服务器 看看可以吗
+# TODO 怎么能够更智能化一点呢
+# TODO replay 太随机了 有的可以有的不可以？？
+# TODO 一定要确保。。。
