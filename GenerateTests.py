@@ -66,10 +66,10 @@ adb_connect_install(adb_exe_path=adb_exe_path, adb_connection_str=adb_connection
 remote_addr = "http://localhost:"+str(appium_port)+"/wd/hub"
 
 # main test loop
-while test_num < 3:
+while test_num < 30:
     try:
         print("\n{} test:\n".format(test_num))
-        appium_command = appium_driver(desired_caps, 10, activities, widgets, widgets_page_source, test_num, remote_addr=remote_addr, adb_exe_path=adb_exe_path)
+        appium_command = appium_driver(desired_caps, 100, activities, widgets, widgets_page_source, test_num, remote_addr=remote_addr, adb_exe_path=adb_exe_path)
         print("\n"+"appium_command:")
         print(appium_command)
         generate_test(appium_command, test_num, trigger_target_APIs)
