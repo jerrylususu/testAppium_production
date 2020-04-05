@@ -12,8 +12,24 @@ import docker
 from initialize_utils.docker_init import docker_init
 from initialize_utils.adb_connect_install import adb_connect_install
 
+# analyse apk
+apk_path="/home/jerrylu/mineapk/de.danoeh.antennapod.apk"
+SDKversion, package, main_activity = analyse_apk(apk_path)
+
+
 # docker related config
-image_name="budtmo/docker-android-x86-9.0"
+APIlevel_androidversion = {
+    '21': '5.0.1',
+    '22': '5.1.1',
+    '23': '6.0',
+    '24': '7.0',
+    '25': '7.1.1',
+    '26': '8.0',
+    '27': '8.1',
+    '28': '9.0',
+}
+
+image_name="budtmo/docker-android-x86-{}".format(APIlevel_androidversion[SDKversion])
 gui_port=6080
 appium_port=4723
 emu_port=5564
@@ -22,10 +38,6 @@ adb_port=5565
 # adb related config
 adb_exe_path="/home/jerrylu/adb/platform-tools/adb"
 adb_connection_str="localhost:" + str(adb_port)  # this is generated at runtime
-apk_path="/home/jerrylu/mineapk/de.danoeh.antennapod.apk"
-
-# analyse apk
-SDKversion, package, main_activity = analyse_apk(apk_path)
 
 # appium desired caps
 desired_caps = {}

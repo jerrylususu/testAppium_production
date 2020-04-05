@@ -21,6 +21,6 @@ def analyse_apk(path):
                         main_activity = activity['@android:name']
 
     package = apk.get_manifest()['@package']
-    SDKversion = apk.get_manifest()['@android:compileSdkVersionCodename']
+    SDKversion = apk.get_manifest()['@android:compileSdkVersion']
 
     return SDKversion, package, main_activity
