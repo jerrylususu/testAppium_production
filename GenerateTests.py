@@ -60,15 +60,6 @@ widgets = set()
 # record widgets in page_source
 widgets_page_source = set()
 
-# clear the last log
-try:
-    delete_text("log/appium.log")
-except Exception as e:
-    print(e)
-    exc_type, exc_value, exc_traceback_obj = sys.exc_info()
-    traceback.print_tb(exc_traceback_obj)
-
-
 # initialize
 client = docker.from_env()
 container = docker_init(client=client, image_name=image_name, gui_port=gui_port, appium_port=appium_port, emu_port=emu_port, adb_port=adb_port)
