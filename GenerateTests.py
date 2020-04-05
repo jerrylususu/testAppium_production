@@ -1,7 +1,8 @@
-import apkutils
 from time import sleep
 import traceback
 import sys
+
+from analyseapk.AnalyseAPK import analyse_apk
 from appiumdriver_processlog.appiumdriver.util.ProcessText import delete_text
 from appiumdriver_processlog.appiumdriver.AppiumDriver import appium_driver
 from appiumdriver_processlog.processlog.ProcessLogFile import generate_test
@@ -24,10 +25,7 @@ adb_connection_str="localhost:" + str(adb_port)  # this is generated at runtime
 apk_path="/home/jerrylu/mineapk/de.danoeh.antennapod.apk"
 
 # analyse apk
-apk = apkutils.APK(apk_path)
-main_activity = apk.get_main_activity()
-package = apk.get_manifest()['@package']
-SDKversion = apk.get_manifest()['@android:compileSdkVersionCodename']
+SDKversion, package, main_activity = analyse_apk(apk_path)
 
 # appium desired caps
 desired_caps = {}
