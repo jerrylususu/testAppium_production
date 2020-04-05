@@ -173,7 +173,7 @@ def check_and_complete_comp_test(comp_test, complete_command, appium_command, i)
 
 
 def generate_test(appium_command, i, trigger_target_APIs):
-    comp_test, complete_command = transfer_log_to_raw_command('log/adb.log', trigger_target_APIs)
+    comp_test, complete_command = transfer_log_to_raw_command('log/adb{}.log'.format(i), trigger_target_APIs)
     print(complete_command)
     if comp_test:
         check_and_complete_comp_test(comp_test, complete_command, appium_command, i)

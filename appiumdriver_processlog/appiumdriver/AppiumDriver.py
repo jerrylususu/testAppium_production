@@ -16,11 +16,11 @@ from appiumdriver_processlog.appiumdriver.util.ProcessText import form_string
 
 
 def appium_driver(desired_caps, event_num, activities, widgets, widgets_page_source, test_num, remote_addr='http://localhost:4723/wb/hub', adb_exe_path="adb"):
-    logging.basicConfig(level=logging.INFO, filename="log/appium.log", format="%(asctime)s [line:%(lineno)d] %(levelname)s %(message)s")
+    # logging.basicConfig(level=logging.INFO, filename="log/appium.log", format="%(asctime)s [line:%(lineno)d] %(levelname)s %(message)s")
     logging.info("start of test {}".format(test_num))
 
-    log_file = open('log/adb.log', "w")
-    err_file = open('log/adberr.log', "w")
+    log_file = open('log/adb{}.log'.format(test_num), "w")
+    err_file = open('log/adberr{}.log'.format(test_num), "w")
     # clear all logcat buffer?
     # TODO: WARNING: This might affect other adb connection in the same host!
     os.system(adb_exe_path+" logcat -b all -c")
@@ -76,10 +76,9 @@ def appium_driver(desired_caps, event_num, activities, widgets, widgets_page_sou
                     # add excutable_elements to widgets_page_source
                     print("{~} debug: outputing executable_elements ")
                     for excutable_ele in executable_elements:
-                        print("{~} -", excutable_ele, "->", excutable_ele.get('resource-id'))
-                        a = form_string("{~} -", str(excutable_ele), "->", str(excutable_ele.get('resource-id')))
-                        print(a)
-                        logging.info(form_string("{~} -", str(excutable_ele), "->", str(excutable_ele.get('resource-id'))))
+                        # print("{~} -", excutable_ele, "->", excutable_ele.get('resource-id'))
+                        # a = form_string("{~} -", str(excutable_ele), "->", str(excutable_ele.get('resource-id')))
+                        # logging.info(form_string("{~} -", str(excutable_ele), "->", str(excutable_ele.get('resource-id'))))
                         widgets_page_source.add(excutable_ele.get('resource-id'))
                     generate_test_base_on_widget(driver, executable_elements, logging, i, appium_command, widgets)
 
@@ -129,4 +128,5 @@ def appium_driver(desired_caps, event_num, activities, widgets, widgets_page_sou
 # TODO 把GitHub上的传到服务器 看看可以吗
 # TODO 怎么能够更智能化一点呢
 # TODO replay 太随机了 有的可以有的不可以？？
-# TODO 一定要确保。。。
+# TODO 一定要确保。。
+# TODO 跑测试的时候把adb logcat 留下
