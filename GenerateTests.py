@@ -12,7 +12,7 @@ from initialize_utils.docker_init import docker_init
 from initialize_utils.adb_connect_install import adb_connect_install
 
 # docker related config
-image_name="budtmo/docker-android-x86-8.1"
+image_name="budtmo/docker-android-x86-9.0"
 gui_port=6080
 appium_port=4723
 emu_port=5564
