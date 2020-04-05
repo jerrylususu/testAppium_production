@@ -13,7 +13,7 @@ def generate_test_base_on_widget(driver, executable_elements, logging, i, appium
         resource_id = selected_ele.get('resource-id')
 
         print(form_string("{~}", "resource-id is", str(resource_id)))
-        logging.warning(form_string("{~}", "resource-id is", str(resource_id)))
+        logging.info(form_string("{~}", "resource-id is", str(resource_id)))
 
         widgets.add(resource_id)
         if resource_id is None or resource_id == '':

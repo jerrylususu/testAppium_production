@@ -12,13 +12,11 @@ def analyse_apk(path):
     for activity in activities:
         if 'intent-filter' in activity.keys():
             intent_filters = activity['intent-filter']
-            print(intent_filters)
             if type(intent_filters) is collections.OrderedDict:
                 if intent_filters['action']['@android:name'] == 'android.intent.action.MAIN':
                     main_activity = activity['@android:name']
             else:
                 for intent_filter in intent_filters:
-                    print(intent_filter)
                     if intent_filter['action']['@android:name'] == 'android.intent.action.MAIN':
                         main_activity = activity['@android:name']
 
