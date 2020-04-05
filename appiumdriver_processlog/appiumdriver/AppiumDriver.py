@@ -16,17 +16,18 @@ from appiumdriver_processlog.appiumdriver.util.ProcessText import form_string
 
 
 def appium_driver(desired_caps, event_num, activities, widgets, widgets_page_source, test_num, remote_addr='http://localhost:4723/wb/hub', adb_exe_path="adb"):
-    # logging.basicConfig(level=logging.INFO, filename="log/appium.log", format="%(asctime)s [line:%(lineno)d] %(levelname)s %(message)s")
+    appium_log = "log/appium{}.log".format(test_num)
+    logging.basicConfig(level=logging.INFO, filename=appium_log, format="%(asctime)s [line:%(lineno)d] %(levelname)s %(message)s")
     logging.info("start of test {}".format(test_num))
 
     log_file = open('log/adb{}.log'.format(test_num), "w")
-    err_file = open('log/adberr{}.log'.format(test_num), "w")
+    # err_file = open('log/adberr{}.log'.format(test_num), "w")
     # clear all logcat buffer?
     # TODO: WARNING: This might affect other adb connection in the same host!
     os.system(adb_exe_path+" logcat -b all -c")
 
     # filter output?
-    p = subprocess.Popen([adb_exe_path, "logcat", "appium:I", "System.err:W", "AndroidRuntime:E", "*:S"], stdout=log_file, stderr=err_file)
+    p = subprocess.Popen([adb_exe_path, "logcat", "appium:I", "System.err:W", "AndroidRuntime:E", "*:S"], stdout=log_file)
     appium_command = []
     print("{*} adb prepare done")
 
