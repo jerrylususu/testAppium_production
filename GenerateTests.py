@@ -28,8 +28,8 @@ APIlevel_androidversion = {
     '27': '8.1',
     '28': '9.0',
 }
-
-image_name="budtmo/docker-android-x86-{}".format(APIlevel_androidversion[SDKversion])
+Android_version = APIlevel_androidversion[SDKversion]
+image_name="budtmo/docker-android-x86-{}".format(Android_version)
 gui_port=6080
 appium_port=4723
 emu_port=5564
@@ -42,7 +42,7 @@ adb_connection_str="localhost:" + str(adb_port)  # this is generated at runtime
 # appium desired caps
 desired_caps = {}
 desired_caps['platformName'] = 'Android'
-desired_caps['platformVersion'] = SDKversion
+desired_caps['platformVersion'] = Android_version
 desired_caps['deviceName'] = 'emulator-5554' # This should be fine... They are all called `emulator-5554` internally inside container
 desired_caps['appPackage'] = package
 desired_caps['appActivity'] = main_activity
