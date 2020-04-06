@@ -14,7 +14,7 @@ from initialize_utils.adb_connect_install import adb_connect_install
 
 # analyse apk
 apk_path="/home/jerrylu/mineapk/de.danoeh.antennapod.apk"
-SDKversion, package, main_activity = analyse_apk(apk_path)
+SDKversion, package, main_activity, minSdk = analyse_apk(apk_path)
 
 from pathlib import Path
 apk_name = Path(apk_path).stem

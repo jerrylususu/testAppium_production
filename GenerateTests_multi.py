@@ -32,7 +32,7 @@ for apk_path in apk_file_list:
         # analyse apk
         # apk_path="/home/jerrylu/mineapk/de.danoeh.antennapod.apk"
         print(f"[!] analyse...")
-        SDKversion, package, main_activity = analyse_apk(apk_path)
+        SDKversion, package, main_activity, minSdk = analyse_apk(apk_path)
 
         apk_name = Path(apk_path).stem
 

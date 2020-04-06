@@ -16,8 +16,8 @@ from appiumdriver_processlog.appiumdriver.util.ProcessText import form_string
 
 
 def appium_driver(desired_caps, event_num, activities, widgets, widgets_page_source, test_num, remote_addr='http://localhost:4723/wb/hub', adb_exe_path="adb", apk_name=""):
-    appium_log = f"log/{apk_name}_appium{test_num}.log"
-    logging.basicConfig(level=logging.INFO, filename=appium_log, format="%(asctime)s [line:%(lineno)d] %(levelname)s %(message)s")
+    # appium_log = f"log/{apk_name}_appium.log"
+    # logging.basicConfig(level=logging.INFO, filename=appium_log, format="%(asctime)s [line:%(lineno)d] %(levelname)s %(message)s")
     logging.info("start of test {}".format(test_num))
 
     log_file = open(f'log/{apk_name}_adb{test_num}.log', "w")
@@ -124,10 +124,3 @@ def appium_driver(desired_caps, event_num, activities, widgets, widgets_page_sou
         p.wait()
         logging.info(form_string("appium commands:", str(appium_command)))
         return appium_command
-
-# TODO 不进行筛选  有多少出多少  看看还有重复的问题嘛  多跑几个apk 试试
-# TODO 把GitHub上的传到服务器 看看可以吗
-# TODO 怎么能够更智能化一点呢
-# TODO replay 太随机了 有的可以有的不可以？？
-# TODO 一定要确保。。
-# TODO 跑测试的时候把adb logcat 留下
