@@ -67,7 +67,7 @@ def appium_driver(desired_caps, event_num, activities, widgets, widgets_page_sou
 
                 random_num = random.random()
                 # if len(same_act_num) < 50:
-                if random_num > 0.1:
+                if random_num > 0:
                     print("{+} start event based on widget")
                     logging.info("{+} start event based on widget")
 
