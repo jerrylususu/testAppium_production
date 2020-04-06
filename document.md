@@ -78,3 +78,63 @@
 **应该把zoom和pinch去掉** 
 现在发现滚动也会造成问题了。。问题很少发生，，，
 只剩下 点击和滚动了 
+
+
+* Explanation
+
+注：下文中
+test case = test
+一个test含有多个event
+
+AnalyseAPK 需要apkutils：分析 sdk_version, MainActivity
+- 可能需要全部 activity （为了覆盖率）（现在已经有全部activity了 只是这里筛选了main）
+
+ParseXML：给一个 page source 的 xml 字符串，可以解析出所有可以点击的按钮的信息
+ProcessText：字符串处理 util
+
+AppiumDriver
+- desired_caps Appium运行的参数（sdk_ver, mainActivity, apk...）
+- event_num 一个test case有多少个event
+- activities 记录触发了哪些activity
+- widgets 记录点击了那些widget（真正点到的）
+- widgets_page_source 所有运行过程中可以点击的widget（一个大list）
+- test_num 生成的test case的数量
+- remote_addr （用于docker协调）远端 appium 地址
+- adb_exe_path adb可执行文件的路径
+
+-> appium_log 运行时的appium log
+--- 现在是一个大文件 所有test都在一个log文件里（bug 没有修，但是似乎也没关系了）
+-> log_file 运行时的adb log 每个test都会生成一个（到 log 文件夹下）
+-> line 34 try 开始真正跑的部分
+--> 34~47 连接, diff_package 判断结束条件（结束条件：连续2次不是当前package就退出）
+--> line 47 while：真正跑各个 event
+---> line 52 sleep 每一次操作完之后等多久才开始拿 page source
+----> line 64 if 判断当前package是否和目标package一致
+OnWidget：点击、send_text、滚动
+OnScreen：pinch、zoom（当前已经没在再使用）
+OnSystem：按物理按键 back, home, menu, vol up/down（当前没有在使用）
+-----> line 68：原来是随机从三个生成机制里选一个生成下一步动作，现在只有 OnWidget了
+-----> line 94：进入了和目标package不一样的package
+------> line 96：如果只是一次不一样 尝试back返回
+------> line 111：如果一次以上 认为被跳到不同程序了 test结束
+
+ProcessLogFile
+每个test中的event会被记录在一个list中（line 187, generate_test）
+line 187 generate_test方法：解析log 文件夹里的log，检查是否触发了target_api，转换成appium的python代码，放到 tests 文件夹下（有触发放到 ctest，无触发放到 test）
+appium_command 执行过的event的list
+i 第几个test
+trigger_target_APIs 所有test trigger到的API的全集
+
+report
+所有test生成完之后生成的总的report
+1 triggered activities 所有的test case trigger的activity
+2 triggered executable elements 所有的test case trigger的element
+3 triggered target APIs 所有的test case trigger的target API（之前apk已经插过桩了 如果触发了target API 会在log中显示）
+4 all achievable executable elements 所有遇到的page source里能点的element的全集
+5 widget coverage: len(2) / len(4)
+
+GenerateTests
+line 70：test_num 生成 test 的数量
+line 73：100 每个test内 event的限制
+
+

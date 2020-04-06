@@ -123,8 +123,8 @@ def transfer_log_to_raw_command(adblog, trigger_target_APIs):
         return comp_test, raw_command
 
 
-def check_and_complete_test(complete_command, appium_command, i):
-    with open('tests/test/test_{}.txt'.format(i), "w", encoding='utf-8') as of:
+def check_and_complete_test(complete_command, appium_command, i, apk_name=""):
+    with open(f'tests/test/{apk_name}_test_{i}.txt', "w", encoding='utf-8') as of:
         of.write("complete_test:"+"\n")
         for k in range(len(complete_command)):
                 if complete_command[k] in appium_command[k]:
@@ -142,8 +142,8 @@ def check_and_complete_test(complete_command, appium_command, i):
                     break
 
 
-def check_and_complete_comp_test(comp_test, complete_command, appium_command, i):
-    with open('tests/ctest/ctest_{}.txt'.format(i), "w", encoding='utf-8') as f:
+def check_and_complete_comp_test(comp_test, complete_command, appium_command, i, apk_name=""):
+    with open(f'tests/ctest/{apk_name}_ctest_{i}.txt', "w", encoding='utf-8') as f:
         for j in range(len(comp_test)):
             raw_command = comp_test[j][0]
             native_APIs = comp_test[j][1]
@@ -184,8 +184,8 @@ def check_and_complete_comp_test(comp_test, complete_command, appium_command, i)
                 break
 
 
-def generate_test(appium_command, i, trigger_target_APIs):
-    comp_test, complete_command = transfer_log_to_raw_command('log/adb{}.log'.format(i), trigger_target_APIs)
+def generate_test(appium_command, i, trigger_target_APIs, apk_name=""):
+    comp_test, complete_command = transfer_log_to_raw_command(f'log/{apk_name}_adb{i}.log', trigger_target_APIs)
     print(complete_command)
     if comp_test:
         check_and_complete_comp_test(comp_test, complete_command, appium_command, i)
