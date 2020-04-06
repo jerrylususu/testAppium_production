@@ -16,6 +16,8 @@ from initialize_utils.adb_connect_install import adb_connect_install
 apk_path="/home/jerrylu/mineapk/de.danoeh.antennapod.apk"
 SDKversion, package, main_activity = analyse_apk(apk_path)
 
+from pathlib import Path
+apk_name = Path(apk_path).stem
 
 # docker related config
 APIlevel_androidversion = {
@@ -70,10 +72,10 @@ remote_addr = "http://localhost:"+str(appium_port)+"/wd/hub"
 while test_num < 30:
     try:
         print("\n{} test:\n".format(test_num))
-        appium_command = appium_driver(desired_caps, 100, activities, widgets, widgets_page_source, test_num, remote_addr=remote_addr, adb_exe_path=adb_exe_path)
+        appium_command = appium_driver(desired_caps, 100, activities, widgets, widgets_page_source, test_num, remote_addr=remote_addr, adb_exe_path=adb_exe_path, apk_name=apk_name)
         print("\n"+"appium_command:")
         print(appium_command)
-        generate_test(appium_command, test_num, trigger_target_APIs)
+        generate_test(appium_command, test_num, trigger_target_APIs, apk_name=apk_name)
     except Exception as e:
         print(e)
         print("error: {}".format(test_num) + "test")
@@ -99,7 +101,7 @@ print("widget coverage:")
 coverage = len(widgets)/len(widgets_page_source)
 print(str(coverage))
 
-with open('report/report.txt', "w") as f:
+with open(f'report/{apk_name}_report.txt', "w") as f:
     f.write("triggered activities:"+"\n")
     f.write(str(activities)+"\n")
     f.write("triggered executable elements:"+"\n")
