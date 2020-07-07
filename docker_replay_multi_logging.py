@@ -30,9 +30,9 @@ from func_timeout import func_timeout, FunctionTimedOut, func_set_timeout
 from multi_logging import worker_init, logger_init
 
 
-# replay_multi_logging: ÅúÁ¿ replay£¬²¢Ê¹ÓÃ python ×Ô´øµÄ logging ¿â¼ÇÂ¼ÈÕÖ¾
-# Êµ¼ÊÊ¹ÓÃµÄ replay ½Å±¾
-# ÎÊÌâ£ºÈİÒ×Òì³£±Àµô
+# replay_multi_logging: æ‰¹é‡ replayï¼Œå¹¶ä½¿ç”¨ python è‡ªå¸¦çš„ logging åº“è®°å½•æ—¥å¿—
+# å®é™…ä½¿ç”¨çš„ replay è„šæœ¬
+# é—®é¢˜ï¼šå®¹æ˜“å¼‚å¸¸å´©æ‰
 
 
 def log_to_file(path, content, time, write_name):
@@ -218,8 +218,8 @@ if __name__ == "__main__":
     }
 
     # read the apk file list
-    # NOTE: ÊäÈë apk list£¬×¢ÒâÊ¹ÓÃÔ­°æ£¬²»ÒªÊ¹ÓÃ²å×®Ö®ºóµÄ°æ±¾
-    # ²å×®Ö®ºóÔÚ²¿·Ö version ÉÏ»áÖ´ĞĞ²»ÆğÀ´
+    # NOTE: è¾“å…¥ apk listï¼Œæ³¨æ„ä½¿ç”¨åŸç‰ˆï¼Œä¸è¦ä½¿ç”¨æ’æ¡©ä¹‹åçš„ç‰ˆæœ¬
+    # æ’æ¡©ä¹‹ååœ¨éƒ¨åˆ† version ä¸Šä¼šæ‰§è¡Œä¸èµ·æ¥
     apk_list_path = "/home/luzhirui/jerrylu/0615_gp_rerun/all_google_play_3k.txt"
     with open(apk_list_path, "r") as f:
         apk_raw_paths = f.readlines()

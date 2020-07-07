@@ -13,8 +13,8 @@ from initialize_utils.docker_init import docker_init
 from initialize_utils.adb_connect_install import adb_connect_install
 from initialize_utils.find_free_port import find_free_port
 
-# GenerateTests - ¶Ôµ¥¸ö apk Éú³É²âÊÔÑùÀı
-# ¾É°æ£¬ÏÖÔÚ¶¼ÊÇÓÃ _multi µÄÅúÁ¿°æ±¾
+# GenerateTests - å¯¹å•ä¸ª apk ç”Ÿæˆæµ‹è¯•æ ·ä¾‹
+# æ—§ç‰ˆï¼Œç°åœ¨éƒ½æ˜¯ç”¨ _multi çš„æ‰¹é‡ç‰ˆæœ¬
 
 # analyse apk
 # wsj.reader_sp.apk

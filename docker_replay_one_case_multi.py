@@ -26,10 +26,10 @@ import logging
 from func_timeout import func_timeout, FunctionTimedOut, func_set_timeout
 
 
-# replay_one_case_multi: ¶ÔÄ³¸öÌØ¶¨µÄ case£¬ÔÚ¶à¸ö version ÉÏÍ¬Ê± replay
-# ÓÃÓÚ¼ì²éÄ³¸ö case ÊÇ·ñÕæµÄÊÇÒ»¸ö¼æÈİĞÔÎÊÌâ
-# »ù±¾ÉÏÊÇ»ùÓÚ replay_multi_logging ¸ÄµÄ
-# »á×Ô¶¯Æğ docker£¬Ê¹ÓÃÍêÖ®ºóĞèÒªÊÖ¶¯ÊäÈëÈÎÒâÖµÏú»Ù
+# replay_one_case_multi: å¯¹æŸä¸ªç‰¹å®šçš„ caseï¼Œåœ¨å¤šä¸ª version ä¸ŠåŒæ—¶ replay
+# ç”¨äºæ£€æŸ¥æŸä¸ª case æ˜¯å¦çœŸçš„æ˜¯ä¸€ä¸ªå…¼å®¹æ€§é—®é¢˜
+# åŸºæœ¬ä¸Šæ˜¯åŸºäº replay_multi_logging æ”¹çš„
+# ä¼šè‡ªåŠ¨èµ· dockerï¼Œä½¿ç”¨å®Œä¹‹åéœ€è¦æ‰‹åŠ¨è¾“å…¥ä»»æ„å€¼é”€æ¯
 
 
 def log_to_file(path, content, time, write_name):
@@ -125,7 +125,7 @@ def run_cases_on_image(apk_path, replay_file_list, image_name):
         # finally:
     try:
         print("load done, press to clean")
-        # NOTE: ½áÊøÖ®ºóĞèÒªËæ±ãÊäÈëµã¶«Î÷À´´¥·¢ container.remove
+        # NOTE: ç»“æŸä¹‹åéœ€è¦éšä¾¿è¾“å…¥ç‚¹ä¸œè¥¿æ¥è§¦å‘ container.remove
         input("input anything to remove container")
         container.remove(force=True)
         print("{*} container removed.")
@@ -164,16 +164,16 @@ APIlevel_androidversion = {
     '29': '10.0'
 }
 
-# ËùÓĞĞèÒªĞŞ¸ÄµÄÖµ
-# --- ¿ªÊ¼
+# æ‰€æœ‰éœ€è¦ä¿®æ”¹çš„å€¼
+# --- å¼€å§‹
 app_name = "me.jakelane.wrapperforfacebook_14"
 ctest_no = 2
 test_no = 0
 
-# apkºÍtest case Â·¾¶£¬°´ĞèĞŞ¸Ä
+# apkå’Œtest case è·¯å¾„ï¼ŒæŒ‰éœ€ä¿®æ”¹
 apk_file_raw_path = "/home/luzhirui/fdroid_1k6/{}.apk".format(app_name)
 test_case_raw_path = "/home/luzhirui/jerrylu/testAppium/replay_evo2/output/testcase_{}.apk-insted_ctest_{}_test{}.py".format(app_name, ctest_no, test_no)
-# --- ½áÊø
+# --- ç»“æŸ
 
 apk_files = [Path(apk_file_raw_path)]
 

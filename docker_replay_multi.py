@@ -28,9 +28,9 @@ import base64
 from func_timeout import func_timeout, FunctionTimedOut, func_set_timeout
 
 
-# replay_multi: ÅúÁ¿ replay
-# ×î¾ÉµÄ°æ±¾£¬ÏÖÔÚÒÑ¾­Ã»ÓĞÔÚÊ¹ÓÃÁË
-# Êµ¼ÊÊ¹ÓÃ²Î¼û replay_logging_multi
+# replay_multi: æ‰¹é‡ replay
+# æœ€æ—§çš„ç‰ˆæœ¬ï¼Œç°åœ¨å·²ç»æ²¡æœ‰åœ¨ä½¿ç”¨äº†
+# å®é™…ä½¿ç”¨å‚è§ replay_logging_multi
 
 def log_to_file(path, content, time, write_name):
     with open(path, "a") as f:

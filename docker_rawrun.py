@@ -6,7 +6,7 @@ from initialize_utils.docker_init import docker_init
 from initialize_utils.adb_connect_install import adb_connect_install
 from initialize_utils.find_free_port import find_free_port
 
-# µ¥´¿ÔËĞĞÔÚÄ³¸ö version ÉÏÔËĞĞÒ»¸ö apk£¬ÓÃÓÚÊÖ¶¯µ÷ÊÔ
+# å•çº¯è¿è¡Œåœ¨æŸä¸ª version ä¸Šè¿è¡Œä¸€ä¸ª apkï¼Œç”¨äºæ‰‹åŠ¨è°ƒè¯•
 
 # docker related config
 # main configs

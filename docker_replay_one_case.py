@@ -16,19 +16,19 @@ from appiumdriver_processlog.appiumdriver.util.ProcessText import delete_text
 from appiumdriver_processlog.appiumdriver.AppiumDriver import appium_driver
 from appiumdriver_processlog.processlog.ProcessLogFile import generate_test
 
-# replay_one_case: Ö»ÔÚÄ³¸öÌØ¶¨ version ÉÏ replay Ä³¸öÌØ¶¨ case
-# Ò»°ãÓÃÓÚ debug£¬»ò³¢ÊÔ¸´ÏÖ¿ÉÄÜ±»¼ì²âµ½µÄÒì³£
-# Ê¹ÓÃÖ®Ç°ĞèÒªÊÖ¶¯Æğ docker£¬È»ºó°Ñ¶ÔÓ¦µÄ¶Ë¿ÚÌîµ½ÏÂÃæ
-# ¾É°æ±¾£¬ÏÖÔÚÖ÷ÒªÊ¹ÓÃ replay_one_case_multi
+# replay_one_case: åªåœ¨æŸä¸ªç‰¹å®š version ä¸Š replay æŸä¸ªç‰¹å®š case
+# ä¸€èˆ¬ç”¨äº debugï¼Œæˆ–å°è¯•å¤ç°å¯èƒ½è¢«æ£€æµ‹åˆ°çš„å¼‚å¸¸
+# ä½¿ç”¨ä¹‹å‰éœ€è¦æ‰‹åŠ¨èµ· dockerï¼Œç„¶åæŠŠå¯¹åº”çš„ç«¯å£å¡«åˆ°ä¸‹é¢
+# æ—§ç‰ˆæœ¬ï¼Œç°åœ¨ä¸»è¦ä½¿ç”¨ replay_one_case_multi
 
-# ËùÓĞĞèÒªÉè¶¨µÄÖµ
-# --- ¿ªÊ¼
+# æ‰€æœ‰éœ€è¦è®¾å®šçš„å€¼
+# --- å¼€å§‹
 apk_path="/home/luzhirui/fdroid_1k6/com.mde.potdroid_80.apk"
 case = "/home/luzhirui/jerrylu/testAppium/replay/output/testcase_com.mde.potdroid_80.apk-insted_ctest_1_test0.py"
 img = "6.0"
 adb_port = 37453
 appium_port = 41109
-# --- ½áÊø
+# --- ç»“æŸ
 
 adb_exe_path="/home/luzhirui/jerrylu/adb/platform-tools/adb"
 aapt_path="/home/luzhirui/jerrylu/android9/android-9/aapt"

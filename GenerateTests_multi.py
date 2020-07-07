@@ -19,8 +19,8 @@ import base64
 from func_timeout import func_timeout, FunctionTimedOut, func_set_timeout
 
 
-# GnerateTests_mutli - ÅúÁ¿Éú³É²âÊÔÑùÀı
-# ÏÖÔÚÊµ¼ÊÊ¹ÓÃµÄµÄ°æ±¾£¬ÓÃÓÚ phase2-generate
+# GnerateTests_mutli - æ‰¹é‡ç”Ÿæˆæµ‹è¯•æ ·ä¾‹
+# ç°åœ¨å®é™…ä½¿ç”¨çš„çš„ç‰ˆæœ¬ï¼Œç”¨äº phase2-generate
 
 
 
@@ -106,7 +106,7 @@ def run_single_apk_task(apk_path):
 
         # main test loop
         print(f"[!] entering main test loop...")
-        while test_num < 10: # NOTE: ÕâÀïĞŞ¸ÄÉú³ÉµÄ²âÊÔÊıÁ¿
+        while test_num < 10: # NOTE: è¿™é‡Œä¿®æ”¹ç”Ÿæˆçš„æµ‹è¯•æ•°é‡
             # try:
             print("\n{} test:\n".format(test_num))
             appium_command = appium_driver(desired_caps, 100, activities, widgets, widgets_page_source, test_num, remote_addr=remote_addr, adb_exe_path=adb_exe_path, apk_name=apk_name, adb_port=adb_port)
@@ -176,7 +176,7 @@ def run_single_apk_task(apk_path):
                 f.write(str(e2))
                 print(f"[!] error {e2}")
 
-        with open(f"generate_logs/{apk_name}.log", "a") as f: # NOTE: append ¶ø²»ÊÇ overwrite
+        with open(f"generate_logs/{apk_name}.log", "a") as f: # NOTE: append è€Œä¸æ˜¯ overwrite
             f.write("\nsuccess finish:"+str(success_finish))
         print("{*} container removed.")
     
@@ -196,13 +196,13 @@ if __name__ == "__main__":
     # load apk from file
     # apk_file_list = []
     
-    # NOTE: ÊäÈë apk list£¬×¢ÒâÊ¹ÓÃ²å×®Ö®ºóµÄ°æ±¾
+    # NOTE: è¾“å…¥ apk listï¼Œæ³¨æ„ä½¿ç”¨æ’æ¡©ä¹‹åçš„ç‰ˆæœ¬
     with open("/home/luzhirui/jerrylu/0615_gp_rerun/all_insted_3k.txt","r") as f:
         lines = f.readlines()
     apk_file_list = [Path(i.strip()) for i in lines]
     print(f"[*] current apk list: {apk_file_list}")
 
-    pool_size=8 # NOTE: ÕâÀïÉèÖÃ²¢ĞĞ¶È
+    pool_size=8 # NOTE: è¿™é‡Œè®¾ç½®å¹¶è¡Œåº¦
 
     with mp.Pool(processes=pool_size) as pool:
         task_list = []

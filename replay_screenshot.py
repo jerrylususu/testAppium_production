@@ -27,8 +27,8 @@ from func_timeout import func_timeout, FunctionTimedOut, func_set_timeout
 
 import base64
 
-# ´ø½ØÍ¼µÄ replay
-# ÏÖÔÚÊ¹ÓÃµÄ replay_multi_logging °æ±¾ÒÑ¾­×Ô´ø½ØÍ¼¹¦ÄÜ£¬ÎŞĞèÊÖ¶¯ÔÙÌí¼Ó
+# å¸¦æˆªå›¾çš„ replay
+# ç°åœ¨ä½¿ç”¨çš„ replay_multi_logging ç‰ˆæœ¬å·²ç»è‡ªå¸¦æˆªå›¾åŠŸèƒ½ï¼Œæ— éœ€æ‰‹åŠ¨å†æ·»åŠ 
 # DEPRECATED
 
 def log_to_file(path, content, time, write_name):
