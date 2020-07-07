@@ -27,6 +27,10 @@ from func_timeout import func_timeout, FunctionTimedOut, func_set_timeout
 
 import base64
 
+# 带截图的 replay
+# 现在使用的 replay_multi_logging 版本已经自带截图功能，无需手动再添加
+# DEPRECATED
+
 def log_to_file(path, content, time, write_name):
     with open(path, "a") as f:
         f.write(str(time))

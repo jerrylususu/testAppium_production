@@ -18,6 +18,12 @@ import base64
 
 from func_timeout import func_timeout, FunctionTimedOut, func_set_timeout
 
+
+# GnerateTests_mutli - 批量生成测试样例
+# 现在实际使用的的版本，用于 phase2-generate
+
+
+
 def run_single_apk_task(apk_path):
 
     print(f"[!] current processing {apk_path}")
@@ -100,7 +106,7 @@ def run_single_apk_task(apk_path):
 
         # main test loop
         print(f"[!] entering main test loop...")
-        while test_num < 10:
+        while test_num < 10: # NOTE: 这里修改生成的测试数量
             # try:
             print("\n{} test:\n".format(test_num))
             appium_command = appium_driver(desired_caps, 100, activities, widgets, widgets_page_source, test_num, remote_addr=remote_addr, adb_exe_path=adb_exe_path, apk_name=apk_name, adb_port=adb_port)
@@ -170,7 +176,7 @@ def run_single_apk_task(apk_path):
                 f.write(str(e2))
                 print(f"[!] error {e2}")
 
-        with open(f"generate_logs/{apk_name}.log", "a") as f:
+        with open(f"generate_logs/{apk_name}.log", "a") as f: # NOTE: append 而不是 overwrite
             f.write("\nsuccess finish:"+str(success_finish))
         print("{*} container removed.")
     
@@ -189,12 +195,14 @@ if __name__ == "__main__":
 
     # load apk from file
     # apk_file_list = []
+    
+    # NOTE: 输入 apk list，注意使用插桩之后的版本
     with open("/home/luzhirui/jerrylu/0615_gp_rerun/all_insted_3k.txt","r") as f:
         lines = f.readlines()
     apk_file_list = [Path(i.strip()) for i in lines]
     print(f"[*] current apk list: {apk_file_list}")
 
-    pool_size=8
+    pool_size=8 # NOTE: 这里设置并行度
 
     with mp.Pool(processes=pool_size) as pool:
         task_list = []

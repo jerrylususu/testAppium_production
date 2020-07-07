@@ -16,17 +16,24 @@ from appiumdriver_processlog.appiumdriver.util.ProcessText import delete_text
 from appiumdriver_processlog.appiumdriver.AppiumDriver import appium_driver
 from appiumdriver_processlog.processlog.ProcessLogFile import generate_test
 
-adb_exe_path="/home/luzhirui/jerrylu/adb/platform-tools/adb"
-aapt_path="/home/luzhirui/jerrylu/android9/android-9/aapt"
+# replay_one_case: 只在某个特定 version 上 replay 某个特定 case
+# 一般用于 debug，或尝试复现可能被检测到的异常
+# 使用之前需要手动起 docker，然后把对应的端口填到下面
+# 旧版本，现在主要使用 replay_one_case_multi
 
+# 所有需要设定的值
+# --- 开始
 apk_path="/home/luzhirui/fdroid_1k6/com.mde.potdroid_80.apk"
 case = "/home/luzhirui/jerrylu/testAppium/replay/output/testcase_com.mde.potdroid_80.apk-insted_ctest_1_test0.py"
 img = "6.0"
 adb_port = 37453
 appium_port = 41109
+# --- 结束
+
+adb_exe_path="/home/luzhirui/jerrylu/adb/platform-tools/adb"
+aapt_path="/home/luzhirui/jerrylu/android9/android-9/aapt"
 adb_connection_str="localhost:" + str(adb_port)  # this is generated at runtime
 remote_addr = "http://localhost:"+str(appium_port)+"/wd/hub"
-
 
 
 SDKversion, package, main_activity, minSdk = analyse_apk(apk_path, aapt_path)
@@ -54,6 +61,7 @@ desired_caps['appPackage'] = package
 desired_caps['appActivity'] = main_activity
 desired_caps['eventTimings'] = True
 desired_caps['automationName'] = 'UIAutomator2'
+desired_caps['autoGrantPermissions'] = True
 
 write_name = f"{case}_{img}"
 print("{*} running case: "+str(case))

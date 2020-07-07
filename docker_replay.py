@@ -48,6 +48,7 @@ desired_caps['appPackage'] = package
 desired_caps['appActivity'] = main_activity
 desired_caps['eventTimings'] = True
 desired_caps['automationName'] = 'UIAutomator2'
+desired_caps['autoGrantPermissions'] = True
 
 
 image_name_list = ["budtmo/docker-android-x86-8.0"]

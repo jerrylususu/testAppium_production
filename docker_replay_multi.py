@@ -27,6 +27,11 @@ import base64
 
 from func_timeout import func_timeout, FunctionTimedOut, func_set_timeout
 
+
+# replay_multi: 批量 replay
+# 最旧的版本，现在已经没有在使用了
+# 实际使用参见 replay_logging_multi
+
 def log_to_file(path, content, time, write_name):
     with open(path, "a") as f:
         f.write(str(time))

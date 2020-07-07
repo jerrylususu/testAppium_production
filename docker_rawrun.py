@@ -6,6 +6,8 @@ from initialize_utils.docker_init import docker_init
 from initialize_utils.adb_connect_install import adb_connect_install
 from initialize_utils.find_free_port import find_free_port
 
+# 单纯运行在某个 version 上运行一个 apk，用于手动调试
+
 # docker related config
 # main configs
 apk_path="/home/luzhirui/fdroid_1k6/com.mde.potdroid_80.apk"
@@ -23,7 +25,7 @@ print(f"[*] port config: gui={gui_port}, appium={appium_port}, emu={emu_port} ,a
 adb_exe_path="/home/luzhirui/jerrylu/adb/platform-tools/adb"
 adb_connection_str="localhost:" + str(adb_port)  # this is generated at runtime
 # apk_path="/home/luzhirui/jerrylu/testAppium/dummy/pod/de.danoeh.antennapod.apk"
-
+apk_path="/home/luzhirui/jerrylu/testAppium/dummy/dummy-jerrylu.apk"
 
 
 # initialize
@@ -35,7 +37,7 @@ print(f"adb_installed: {adb_installed}")
 remote_addr = "http://localhost:"+str(appium_port)+"/wd/hub"
 
 print("{*} remote addr: ", remote_addr)
-input("seems prep done... press any key to start tear down...")
+input("seems prep done... press to start tear down...")
 
 container.remove(force=True)
 print("{*} container removed.")

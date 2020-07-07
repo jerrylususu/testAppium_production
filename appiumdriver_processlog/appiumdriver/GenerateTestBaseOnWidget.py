@@ -44,7 +44,7 @@ def generate_test_base_on_widget(driver, executable_elements, logging, i, appium
                         print(form_string("{~}", "event {}:".format(i), "widget", "resource_id:", resource_id, "operation:", "click"))
                         appium_command.append("driver.find_element_by_id('{}').click()".format(resource_id))
                     except Exception:
-                        logging.exception()
+                        logging.exception("exp")
                         logging.error(form_string("{w}", "event {}:".format(i), "widget", "Something went wrong when click",
                                                   resource_id))
                         print(form_string("{w}", "event {}:".format(i), "widget", "Something went wrong when click", resource_id))

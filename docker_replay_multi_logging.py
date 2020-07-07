@@ -29,6 +29,12 @@ from func_timeout import func_timeout, FunctionTimedOut, func_set_timeout
 
 from multi_logging import worker_init, logger_init
 
+
+# replay_multi_logging: 批量 replay，并使用 python 自带的 logging 库记录日志
+# 实际使用的 replay 脚本
+# 问题：容易异常崩掉
+
+
 def log_to_file(path, content, time, write_name):
     with open(path, "a") as f:
         f.write(str(time))
@@ -212,6 +218,8 @@ if __name__ == "__main__":
     }
 
     # read the apk file list
+    # NOTE: 输入 apk list，注意使用原版，不要使用插桩之后的版本
+    # 插桩之后在部分 version 上会执行不起来
     apk_list_path = "/home/luzhirui/jerrylu/0615_gp_rerun/all_google_play_3k.txt"
     with open(apk_list_path, "r") as f:
         apk_raw_paths = f.readlines()

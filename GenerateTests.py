@@ -13,6 +13,9 @@ from initialize_utils.docker_init import docker_init
 from initialize_utils.adb_connect_install import adb_connect_install
 from initialize_utils.find_free_port import find_free_port
 
+# GenerateTests - 对单个 apk 生成测试样例
+# 旧版，现在都是用 _multi 的批量版本
+
 # analyse apk
 # wsj.reader_sp.apk
 apk_path="/home/luzhirui/jerrylu/0421_fdroid_rerun/evo_apk/a2dp.Vol_137.apk-insted.apk"
@@ -71,6 +74,7 @@ desired_caps['appPackage'] = package
 desired_caps['appActivity'] = main_activity
 desired_caps['eventTimings'] = True
 desired_caps['automationName'] = 'UIAutomator2'
+desired_caps['autoGrantPermissions'] = True
 
 # test related data containers
 test_num = 0

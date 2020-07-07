@@ -16,7 +16,9 @@ from appiumdriver_processlog.appiumdriver.util.ProcessText import form_string
 
 from func_timeout import func_timeout, FunctionTimedOut, func_set_timeout
 import base64
+from initialize_utils.timeout_fix import timeout_exception_wrapper
 
+@timeout_exception_wrapper
 @func_set_timeout(300)
 def appium_driver(desired_caps, event_num, activities, widgets, widgets_page_source, test_num, remote_addr='http://localhost:4723/wb/hub', adb_exe_path="adb", apk_name="", adb_port=5554):
     # appium_log = f"log/{apk_name}_appium.log"
@@ -139,4 +141,3 @@ def appium_driver(desired_caps, event_num, activities, widgets, widgets_page_sou
         p.wait()
         logging.info(form_string("appium commands:", str(appium_command)))
         return appium_command
-

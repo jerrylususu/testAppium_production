@@ -32,6 +32,7 @@ from multi_logging import worker_init, logger_init
 img_folder = Path("/home/luzhirui/jerrylu/testAppium/replay_evo2/replay_screenshots/")
 
 # comp: 补全没有图片的
+# 这个是权宜之计，之前会跑着跑着崩掉，是为了在第一次全量 replay 之后没有正常图片输出的那些
 
 def log_to_file(path, content, time, write_name):
     with open(path, "a") as f:

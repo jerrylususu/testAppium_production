@@ -25,6 +25,13 @@ import logging
 
 from func_timeout import func_timeout, FunctionTimedOut, func_set_timeout
 
+
+# replay_one_case_multi: 对某个特定的 case，在多个 version 上同时 replay
+# 用于检查某个 case 是否真的是一个兼容性问题
+# 基本上是基于 replay_multi_logging 改的
+# 会自动起 docker，使用完之后需要手动输入任意值销毁
+
+
 def log_to_file(path, content, time, write_name):
     pass
     # with open(path, "a") as f:
@@ -118,7 +125,8 @@ def run_cases_on_image(apk_path, replay_file_list, image_name):
         # finally:
     try:
         print("load done, press to clean")
-        input("waiting input!!!")
+        # NOTE: 结束之后需要随便输入点东西来触发 container.remove
+        input("input anything to remove container")
         container.remove(force=True)
         print("{*} container removed.")
     except Exception as e:
@@ -156,13 +164,16 @@ APIlevel_androidversion = {
     '29': '10.0'
 }
 
+# 所有需要修改的值
+# --- 开始
 app_name = "me.jakelane.wrapperforfacebook_14"
 ctest_no = 2
 test_no = 0
 
-
+# apk和test case 路径，按需修改
 apk_file_raw_path = "/home/luzhirui/fdroid_1k6/{}.apk".format(app_name)
 test_case_raw_path = "/home/luzhirui/jerrylu/testAppium/replay_evo2/output/testcase_{}.apk-insted_ctest_{}_test{}.py".format(app_name, ctest_no, test_no)
+# --- 结束
 
 apk_files = [Path(apk_file_raw_path)]
 

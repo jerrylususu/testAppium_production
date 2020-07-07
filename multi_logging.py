@@ -2,12 +2,14 @@ import multiprocessing
 import logging
 from logging.handlers import QueueHandler, QueueListener
 
+# ∂‡ worker »’÷æ
+
 def worker_init(q):
     # all records from worker processes go to qh and then into q
     qh = QueueHandler(q)
     logger = logging.getLogger()
     logger.setLevel(logging.INFO)
-    logger.addHandler(qh)
+    # logger.addHandler(qh)
 
 
 def logger_init(file_location="multi.log"):
