@@ -4,7 +4,7 @@ import sys
 
 from analyseapk.AnalyseAPK import analyse_apk
 from appiumdriver_processlog.appiumdriver.util.ProcessText import delete_text
-from appiumdriver_processlog.appiumdriver.AppiumDriver import appium_driver
+from appiumdriver_processlog.appiumdriver.AppiumDriver import appium_driver, appium_driver_ui
 from appiumdriver_processlog.processlog.ProcessLogFile import generate_test
 
 # jerrylu scripts
@@ -100,10 +100,10 @@ def run_single_apk_task(apk_path):
 
         # main test loop
         print(f"[!] entering main test loop...")
-        while test_num < 10:
+        while test_num < 3:
             # try:
             print("\n{} test:\n".format(test_num))
-            appium_command = appium_driver(desired_caps, 100, activities, widgets, widgets_page_source, test_num, remote_addr=remote_addr, adb_exe_path=adb_exe_path, apk_name=apk_name, adb_port=adb_port)
+            appium_command = appium_driver_ui(desired_caps, 100, activities, widgets, widgets_page_source, test_num, remote_addr=remote_addr, adb_exe_path=adb_exe_path, apk_name=apk_name, adb_port=adb_port)
             print("\n"+"appium_command:")
             print(appium_command)
             generate_test(appium_command, test_num, trigger_target_APIs, apk_name=apk_name)
@@ -188,10 +188,12 @@ if __name__ == "__main__":
     # apk_file_list = [Path("/home/luzhirui/jerrylu/testAppium/0408apks/de.danoeh.antennapod_instrumentation.apk")]
 
     # load apk from file
-    # apk_file_list = []
-    with open("/home/luzhirui/jerrylu/0615_gp_rerun/all_insted_3k.txt","r") as f:
-        lines = f.readlines()
+    apk_file_list = []
+    # with open("/home/luzhirui/jerrylu/0421_fdroid_rerun/evo_fdroid_list_full.txt","r") as f:
+    #     lines = f.readlines()
+    lines = ["/home/luzhirui/jerrylu/mineapk/de.danoeh.antennapod.apk"]
     apk_file_list = [Path(i.strip()) for i in lines]
+    # apk_file_list = apk_file_list[0:1]
     print(f"[*] current apk list: {apk_file_list}")
 
     pool_size=8

@@ -105,3 +105,31 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# vscode
+.vscode/
+
+
+# general folders
+*apks/
+generate_logs*/
+generate_screenshots*/
+log*/
+replay*/
+report*/
+tests*/
+
+
+# specific folder
+crash_log_evo2/
+dummy/
+ipynbs/
+manifest/
+output_pod/
+pylogs/
+ui/
+Untitled Folder/
+
+# strange things
+*.log
+*.swp

@@ -119,7 +119,10 @@ def transfer_log_to_raw_command(adblog, trigger_target_APIs):
 
             resource_id = check_line(resource_id, line, raw_command, f)
             line = f.readline().strip('\n')
-        trigger_target_APIs = trigger_target_APIs | trigger_target_APIs_one_test
+        
+        trigger_target_APIs.update(trigger_target_APIs_one_test)
+        # this is a bug...
+        # trigger_target_APIs = trigger_target_APIs | trigger_target_APIs_one_test
         return comp_test, raw_command
 
 
@@ -188,9 +191,9 @@ def generate_test(appium_command, i, trigger_target_APIs, apk_name=""):
     comp_test, complete_command = transfer_log_to_raw_command(f'log/{apk_name}_adb{i}.log', trigger_target_APIs)
     print(complete_command)
     if comp_test:
-        check_and_complete_comp_test(comp_test, complete_command, appium_command, i)
+        check_and_complete_comp_test(comp_test, complete_command, appium_command, i, apk_name=apk_name)
     else:
-        check_and_complete_test(complete_command, appium_command, i)
+        check_and_complete_test(complete_command, appium_command, i, apk_name=apk_name)
 
 
 if __name__ == '__main__':
