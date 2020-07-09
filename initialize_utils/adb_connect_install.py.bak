@@ -11,7 +11,7 @@ from initialize_utils.timeout_fix import timeout_exception_wrapper
 
 @timeout_exception_wrapper
 @func_set_timeout(200)
-def adb_connect_install(adb_exe_path, adb_connection_str, apk_path, sleep_time=5) -> bool:
+def adb_connect_install(adb_exe_path, adb_connection_str, apk_path, sleep_time=5):
 
     connected = False
 
@@ -70,7 +70,7 @@ def adb_connect_install(adb_exe_path, adb_connection_str, apk_path, sleep_time=5
     return installed
 
 
-def adb_connect_uninstall_pkg(adb_exe_path, adb_connection_str, pkg_name, sleep_time=5) -> bool:
+def adb_connect_uninstall_pkg(adb_exe_path, adb_connection_str, pkg_name, sleep_time=5):
 
     connected = False
 
@@ -122,7 +122,7 @@ def adb_connect_uninstall_pkg(adb_exe_path, adb_connection_str, pkg_name, sleep_
     print("{#} Uninstall APK done. Now you may proceed.")
     return uninstalled
 
-def adb_connect_uninstall(adb_exe_path, adb_connection_str, apk_path, aapt_path, sleep_time=5) -> bool:
+def adb_connect_uninstall(adb_exe_path, adb_connection_str, apk_path, aapt_path, sleep_time=5):
     
     SDKversion, package, main_activity, minSdk = analyse_apk(apk_path, aapt_path)
     return adb_connect_uninstall_pkg(adb_exe_path, adb_connection_str, package, sleep_time)
