@@ -12,6 +12,4 @@ services:
             - ./mqdata:/var/lib/rabbitmq/mnesia/rabbit@app-rabbitmq:cached
         environment:
             RABBITMQ_ERLANG_COOKIE: REPLAY
-            RABBITMQ_DEFAULT_USER: replay
-            RABBITMQ_DEFAULT_PASS: replay
             RABBITMQ_DEFAULT_VHOST: /
