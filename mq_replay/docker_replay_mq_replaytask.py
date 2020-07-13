@@ -19,6 +19,17 @@ class ReplayRequest:
     replayCaseList: List[ReplayTestCase]
     desiredCaps: Dict
 
+
+@dataclass
+class ReplayTestCaseSummary:
+    apkName: str  # with ".apk" in the end
+    packageName: str # only the package name
+    androidVersion: str # version to run on
+    testNumber: int
+    ctestNumber: int
+    writeName: str
+
+
 @dataclass
 class ReplayResponse:
     success: bool
@@ -26,3 +37,4 @@ class ReplayResponse:
     pageSource: str
     imgBase64: str
     adbLog: str
+    testcaseSummary: ReplayTestCaseSummary

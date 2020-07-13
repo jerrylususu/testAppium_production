@@ -1,17 +1,10 @@
 # runner: 真正执行 consumer 中规定的 consume 函数
 
-# TODO: heartbeat?
-# TODO: command line arguments?
-# TODO: auto_ack=false
-
-
 import json
 import logging
 from logging import log
 
 import jsonpickle
-from mq_replay.docker_replay_mq_producer import adb_exe_path, channel, replay_request
-from mq_replay.docker_replay_mq_replaytask import ReplayRequest
 import sys
 from sys import version_info
 import time
@@ -22,7 +15,7 @@ import jsonpickle
 
 sys.path.insert(0,'..')
 
-
+from mq_replay.docker_replay_mq_replaytask import *
 from mq_replay.docker_replay_mq_consumer import run_test_case
 
 def consume(ch, method, peoperties, body, send_channel, 
@@ -84,7 +77,7 @@ if __name__ == "__main__":
 
     recv_queue_name = f"{android_version}_{device_type}"
     recv_queue = recv_channel.queue_declare(recv_queue_name,durable=True,exclusive=False)
-    channel.queue_bind(exchange="replay_request", queue=recv_queue_name, routing_key=f"{android_version}.{device_type}")
+    recv_channel.queue_bind(exchange="replay_request", queue=recv_queue_name, routing_key=f"{android_version}.{device_type}")
     
     # step3. set up callback
     recv_channel.basic_consume(queue=recv_queue_name, 

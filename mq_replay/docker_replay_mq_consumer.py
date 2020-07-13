@@ -4,11 +4,8 @@
 from logging import exception
 
 import jsonpickle
-from mq_replay.docker_replay_mq_producer import routing_key
-from docker_replay_multi import adb_exe_path, desired_caps, replay_file_list
 import json
 import logging
-from mq_replay.docker_replay_mq_replaytask import ReplayRequest, ReplayResponse
 import typing
 import pika
 import sys
@@ -17,6 +14,7 @@ import base64
 
 sys.path.insert(0,'..')
 
+from mq_replay.docker_replay_mq_replaytask import *
 from initialize_utils.adb_connect_install import adb_connect_install, adb_connect_uninstall_pkg
 
 def run_test_case(adb_port: int, appium_port: int, replay_request: ReplayRequest, 
@@ -47,12 +45,22 @@ adb_exe_path, local_apk_root, replay_output_full_path) -> bool:
     # run -> read result -> package ReplayResponse -> send to queue
     for idx, testcase in enumerate(replay_request.replayCaseList):
 
+        write_name = f"{replay_request.apkName}_t{testcase.testNumber}c{testcase.ctestNumber}_{replay_request.androidVersion}"
+
         # set up the response
         replay_response = ReplayResponse(success=True,
             errorMessage="not inited",
             pageSource="",
             imgBase64="",
-            adbLog=""
+            adbLog="",
+            testcaseSummary=ReplayTestCaseSummary(
+                apkName=replay_request.apkName,
+                packageName=replay_request.packageName,
+                androidVersion=replay_request.androidVersion,
+                testNumber=testcase.testNumber,
+                ctestNumber=testcase.ctestNumber,
+                writeName=write_name
+            )
         )
         
         # read test case code & load
@@ -69,7 +77,6 @@ adb_exe_path, local_apk_root, replay_output_full_path) -> bool:
         
         exec(code)
         logging.info(f"[*] test case load done, start replay...")
-        write_name = f"{replay_request.apkName}_t{testcase.testNumber}c{testcase.ctestNumber}_{replay_request.androidVersion}"
         logging.info(f"[DBG] remote_addr={remote_addr}, write_name={write_name}")
         
         # try to run the test case

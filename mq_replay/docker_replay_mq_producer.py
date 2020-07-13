@@ -16,7 +16,7 @@ import jsonpickle
 
 sys.path.insert(0,'..')
 
-from mq_replay.docker_replay_mq_replaytask import ReplayRequest, ReplayTestCase
+from mq_replay.docker_replay_mq_replaytask import *
 
 from initialize_utils.docker_init import docker_init
 from initialize_utils.adb_connect_install import adb_connect_install
@@ -47,7 +47,7 @@ if __name__ == "__main__":
     testcase_name_regex = re.compile("testcase_(.+)-insted_ctest_(\d+)_test(\d+)")
 
     # create the queue
-    connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost', heartbeat=0))
+    connection = pika.BlockingConnection(pika.ConnectionParameters(host="localhost", heartbeat_interval=0))
     channel = connection.channel()
 
     channel.exchange_declare(exchange='replay_request', exchange_type='topic')

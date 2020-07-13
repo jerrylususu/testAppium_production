@@ -1,0 +1,17 @@
+version: '3'
+ 
+services:
+ 
+    rabbitmq:
+        image: rabbitmq:3-management-alpine
+        hostname: app-rabbitmq
+        ports:
+            - 5672:5672
+            - 15672:15672
+        volumes:
+            - ./mqdata:/var/lib/rabbitmq/mnesia/rabbit@app-rabbitmq:cached
+        environment:
+            RABBITMQ_ERLANG_COOKIE: REPLAY
+            RABBITMQ_DEFAULT_USER: replay
+            RABBITMQ_DEFAULT_PASS: replay
+            RABBITMQ_DEFAULT_VHOST: /
