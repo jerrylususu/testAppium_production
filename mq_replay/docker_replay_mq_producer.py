@@ -29,6 +29,10 @@ if __name__ == "__main__":
     logging.basicConfig(filename="pylog/producer.log", level=logging.INFO, format="%(levelname)s: %(asctime)s - %(process)s - [%(filename)s:%(lineno)s] - %(message)s")
     logging.getLogger().addHandler(logging.StreamHandler(sys.stdout))
 
+    # need change
+    replay_testcase_path = "/home/luzhirui/jerrylu/testAppium/replay_0714_mqdebug/output"
+    apk_list_path = "/home/luzhirui/jerrylu/google_play_3k.txt"
+
     # consts.
     adb_exe_path="/home/luzhirui/jerrylu/adb/platform-tools/adb"
     aapt_path="/home/luzhirui/jerrylu/android9/android-9/aapt"
@@ -43,7 +47,7 @@ if __name__ == "__main__":
         '28': '9.0',
         '29': '10.0'
     }
-    replay_testcase_path = "/home/luzhirui/jerrylu/testAppium/replay_0714_mqdebug/output"
+
     testcase_name_regex = re.compile("testcase_(.+)-insted_ctest_(\d+)_test(\d+)")
 
     # create the queue
@@ -55,7 +59,7 @@ if __name__ == "__main__":
 
     # param.
     # NOTE: 输入 apk list，注意使用原版，不要使用插桩之后的版本    
-    apk_list_path = "/home/luzhirui/jerrylu/0417_fdroid_1k6_api_rerun/all_fdroid_1k6.txt"
+
     with open(apk_list_path, "r") as f:
         apk_raw_paths = f.readlines()
 
@@ -119,7 +123,8 @@ if __name__ == "__main__":
                 # else:
                 #     print("skipping "+str(file))
 
-        logging.info(f"{apk_path.stem}, len(testcase)={len(replay_testcase_list)}")
+        if len(replay_testcase_list) > 0:
+            logging.info(f"{apk_path.stem}, len(testcase)={len(replay_testcase_list)}")
                 
         if len(replay_testcase_list) == 0:
             continue
