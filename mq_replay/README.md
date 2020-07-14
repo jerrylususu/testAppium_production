@@ -27,7 +27,7 @@ status_line: f"{container.id},{adb_port},{appium_port},{version},{idx},virtual,{
 ## 测试
 
 ### 原理性验证
-1. adb uninstall 测试（手动启动）->
+1. adb uninstall 测试（手动启动）-> 已经确认 OK
 2. routing_key 设置为 # 能否接受到所有消息（用官网示例）-> 已经确认可行
 
 ### 联调
