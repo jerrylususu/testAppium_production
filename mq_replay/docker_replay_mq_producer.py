@@ -73,6 +73,7 @@ if __name__ == "__main__":
             if apk_path.stem in file.stem:
                 with open(str(file),"r",encoding="utf8") as f:
                     content = f.readlines()
+                content = "".join(content)
                 
                 apk_name_in_test, testn, ctestn = re.match(testcase_name_regex, file.stem).groups()
 
