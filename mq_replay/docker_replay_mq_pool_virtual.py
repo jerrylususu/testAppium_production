@@ -45,7 +45,7 @@ if __name__ == "__main__":
         for version, count in pool_config.items():
             for idx in range(count):
                 image_name = image_prefix + version
-                container_name = get_valid_filename(image_name) + "_" + idx
+                container_name = get_valid_filename(image_name) + "_" + str(idx)
                 print(container_name)
 
                 # NOTE: only needs adb_port + appium_port
