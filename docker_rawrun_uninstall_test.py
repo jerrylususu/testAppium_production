@@ -12,7 +12,7 @@ from initialize_utils.find_free_port import find_free_port
 # docker related config
 # main configs
 apk_path="/home/luzhirui/fdroid_1k6/com.mde.potdroid_80.apk"
-image_name="budtmo/docker-android-x86-6.0"
+image_name="budtmo/docker-android-x86-8.0"
 
 
 gui_port=find_free_port()
@@ -50,7 +50,7 @@ print(f"adb_uninstalled: {adb_uninstalled}")
 
 input("s3: start install apk2")
 
-apk_path="/home/luzhirui/jerrylu/testAppium/dummy/pod/de.danoeh.antennapod.apk"
+apk_path="/home/luzhirui/fdroid_1k6/de.danoeh.antennapod_1080095.apk"
 adb_installed = adb_connect_install(adb_exe_path=adb_exe_path, adb_connection_str=adb_connection_str,apk_path=apk_path)
 print(f"adb_installed: {adb_installed}")
 
