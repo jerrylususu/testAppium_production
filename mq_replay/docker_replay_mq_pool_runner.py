@@ -49,7 +49,7 @@ if __name__ == "__main__":
     # consts.
     # TODO!
     adb_exe_path = "/home/luzhirui/jerrylu/adb/platform-tools/adb"
-    local_apk_root = "/home/luzhirui/fdroid_1k6/"
+    local_apk_root = "/home/luzhirui/google_play_3k/"
     # NOTE: needs to end with /
     replay_output_full_path = "/home/luzhirui/jerrylu/testAppium/replay/"
 
