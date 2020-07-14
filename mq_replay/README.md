@@ -21,7 +21,7 @@ replay_request: routing_key=version.(virtual/physical) (f"{android_version}_{dev
 
 replay_response: routing_key=f"{replay_request.apkName}.{replay_request.androidVersion}.{testcase.testNumber}.{testcase.ctestNumber}"
 
-status_line: f"{container.id},{adb_port},{appium_port},{version},{idx},virtual,{emu_port},{gui_port}"
+status_line: f"{container.id},{adb_port},{appium_port},{version},{idx},{device_type(virtual/physical)},{emu_port},{gui_port}"
 
 
 ## 测试
