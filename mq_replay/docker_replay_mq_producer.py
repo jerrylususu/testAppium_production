@@ -43,11 +43,11 @@ if __name__ == "__main__":
         '28': '9.0',
         '29': '10.0'
     }
-    replay_testcase_path = "/home/luzhirui/jerrylu/testAppium/replay/output"
+    replay_testcase_path = "/home/luzhirui/jerrylu/testAppium/replay_0714_mqdebug/output"
     testcase_name_regex = re.compile("testcase_(.+)-insted_ctest_(\d+)_test(\d+)")
 
     # create the queue
-    connection = pika.BlockingConnection(pika.ConnectionParameters(host="localhost", heartbeat_interval=0))
+    connection = pika.BlockingConnection(pika.ConnectionParameters(host="localhost", heartbeat=0))
     channel = connection.channel()
 
     channel.exchange_declare(exchange='replay_request', exchange_type='topic')
@@ -55,7 +55,7 @@ if __name__ == "__main__":
 
     # param.
     # NOTE: 输入 apk list，注意使用原版，不要使用插桩之后的版本    
-    apk_list_path = "/home/luzhirui/jerrylu/0615_gp_rerun/all_google_play_3k.txt"
+    apk_list_path = "/home/luzhirui/jerrylu/0417_fdroid_1k6_api_rerun/all_fdroid_1k6.txt"
     with open(apk_list_path, "r") as f:
         apk_raw_paths = f.readlines()
 
