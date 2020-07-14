@@ -56,6 +56,7 @@ if __name__ == "__main__":
     status_arr = status_line.split(",")
 
     contianer_id, adb_port, appium_port, android_version, device_type = status_arr[0:5]
+    logging.info(f"contianer_id, adb_port, appium_port, android_version, device_type: {(contianer_id, adb_port, appium_port, android_version, device_type)}")
     adb_port, appium_port = int(adb_port), int(appium_port)  
     log_identifier = f"{android_version}_{device_type}_{contianer_id[0:4]}"
 
