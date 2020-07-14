@@ -1,4 +1,3 @@
-from docker_replay_multi import aapt_path
 from analyseapk.AnalyseAPK import analyse_apk
 import os
 from time import sleep
