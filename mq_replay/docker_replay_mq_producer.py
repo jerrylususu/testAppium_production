@@ -67,7 +67,36 @@ if __name__ == "__main__":
 
     for apk_path in apk_files:
 
-        logging.info("starting on {}".format(apk_path))
+        replay_testcase_list: List[ReplayTestCase] = []
+
+        for file in list(Path(replay_testcase_path).iterdir()):
+            if apk_path.stem in file.stem:
+                with open(str(file),"r",encoding="utf8") as f:
+                    content = f.readlines()
+                
+                apk_name_in_test, testn, ctestn = re.match(testcase_name_regex, file.stem).groups()
+
+                if len(content) > 0:
+                    testcase = ReplayTestCase(
+                        testNumber=testn,
+                        ctestNumber=ctestn,
+                        fileContent=content
+                    )
+                    replay_testcase_list.append(testcase)
+
+                # NOTE: 在 convert 的时候就做过滤，不要等到现在，因为已经带上了上下文，没法搞了
+                # if not only_sleep1(content) or len(content) <= 5:  #FIXME: that's broken test
+                #     replay_file_list.append(file)
+                # else:
+                #     print("skipping "+str(file))
+
+        if len(replay_testcase_list) > 0:
+            logging.info(f"{apk_path.stem}, len(testcase)={len(replay_testcase_list)}")
+                
+        if len(replay_testcase_list) == 0:
+            continue
+
+        logging.info("working on {}".format(apk_path))
 
         SDKversion, package, main_activity, minSdk = analyse_apk(apk_path, aapt_path)
         # min sdk parse error?
@@ -99,35 +128,6 @@ if __name__ == "__main__":
             if int(k) >= minSdk:
                 version_li.append(v)
         image_name_list = [f"budtmo/docker-android-x86-{i}" for i in version_li]
-
-        replay_testcase_list: List[ReplayTestCase] = []
-
-        for file in list(Path(replay_testcase_path).iterdir()):
-            if apk_path.stem in file.stem:
-                with open(str(file),"r",encoding="utf8") as f:
-                    content = f.readlines()
-                
-                apk_name_in_test, testn, ctestn = re.match(testcase_name_regex, file.stem).groups()
-
-                if len(content) > 0:
-                    testcase = ReplayTestCase(
-                        testNumber=testn,
-                        ctestNumber=ctestn,
-                        fileContent=content
-                    )
-                    replay_testcase_list.append(testcase)
-
-                # NOTE: 在 convert 的时候就做过滤，不要等到现在，因为已经带上了上下文，没法搞了
-                # if not only_sleep1(content) or len(content) <= 5:  #FIXME: that's broken test
-                #     replay_file_list.append(file)
-                # else:
-                #     print("skipping "+str(file))
-
-        if len(replay_testcase_list) > 0:
-            logging.info(f"{apk_path.stem}, len(testcase)={len(replay_testcase_list)}")
-                
-        if len(replay_testcase_list) == 0:
-            continue
 
         # for each android version
         for v in version_li:
