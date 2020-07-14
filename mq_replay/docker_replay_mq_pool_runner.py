@@ -51,7 +51,7 @@ if __name__ == "__main__":
     adb_exe_path = "/home/luzhirui/jerrylu/adb/platform-tools/adb"
     local_apk_root = "/home/luzhirui/google_play_3k/"
     # NOTE: needs to end with /
-    replay_output_full_path = "/home/luzhirui/jerrylu/testAppium/replay/"
+    replay_output_full_path = "/home/luzhirui/jerrylu/testAppium/replay_0714_mqdebug/"
 
     # step1. parse the input status line
     status_line = sys.argv[1].strip()
