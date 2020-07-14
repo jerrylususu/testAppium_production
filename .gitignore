@@ -133,3 +133,6 @@ Untitled Folder/
 # strange things
 *.log
 *.swp
+
+# rabbitmq
+*/mqdata/
