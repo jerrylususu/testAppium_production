@@ -14,7 +14,7 @@ if __name__ == "__main__":
         for line in lines:
             print(line)
             apk = base_apk_root / f"{line}.apk"
-            SDKversion, package, main_activity, minSdk = apk(apk_path)
+            SDKversion, package, main_activity, minSdk = analyse_apk(apk)
             print(f"SDKversion, package, main_activity, minSdk: {(SDKversion, package, main_activity, minSdk)}")
             f2.write(SDKversion)
             f2.write("\n")
