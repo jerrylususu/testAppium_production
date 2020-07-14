@@ -23,6 +23,7 @@ adb_exe_path, local_apk_root, replay_output_full_path) -> bool:
 
     # NOTE: replay_output_full_path ends with /
     # subfolder: replay_adb, replay_page_sources, replay_screenshots
+    logging.info(f"received request: {replay_request.apkName}")
 
     # step0. prepare param
     apk_path = Path(local_apk_root) / replay_request.apkName
