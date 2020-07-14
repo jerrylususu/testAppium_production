@@ -13,6 +13,10 @@ PYTHON_LOG_FOLDER=pylog
 mkdir $BASH_REDIRECT_FOLDER
 mkdir $PYTHON_LOG_FOLDER
 
+# remove previous logs
+rm $BASH_REDIRECT_FOLDER/*.out
+rm $BASH_REDIRECT_FOLDER/*.err
+
 # empty the ouput file
 > $OUTPUT_FILE
 
