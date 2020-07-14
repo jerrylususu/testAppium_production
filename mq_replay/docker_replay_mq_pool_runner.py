@@ -24,6 +24,8 @@ adb_exe_path, local_apk_root, replay_output_full_path):
 
     replay_request = jsonpickle.decode(body.decode("utf8"))
 
+    logging.info(f"received!: {replay_request.apkName}")
+
     run_test_case(adb_port=adb_port,
     appium_port=appium_port,
     replay_request=replay_request,
