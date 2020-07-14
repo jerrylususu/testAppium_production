@@ -2,7 +2,7 @@
 
 
 # params
-PYTHON_PATH=/usr/bin/python3
+PYTHON_PATH=/home/luzhirui/miniconda3/bin/python3.7
 SCRIPT_PATH=docker_replay_mq_pool_runner.py
 INPUT_FILE=pool_status
 OUTPUT_FILE=pool_pid
