@@ -58,7 +58,7 @@ if __name__ == "__main__":
     status_arr = status_line.split(",")
 
     contianer_id, adb_port, appium_port, android_version, _ ,device_type = status_arr[0:6]
-    logging.info(f"contianer_id, adb_port, appium_port, android_version, device_type: {(contianer_id, adb_port, appium_port, android_version, device_type)}")
+    print(f"contianer_id, adb_port, appium_port, android_version, device_type: {(contianer_id, adb_port, appium_port, android_version, device_type)}")
     adb_port, appium_port = int(adb_port), int(appium_port)  
     log_identifier = f"{android_version}_{device_type}_{contianer_id[0:4]}"
 
@@ -88,6 +88,11 @@ if __name__ == "__main__":
         send_channel, contianer_id, adb_port, appium_port, android_version, device_type, status_line,
         adb_exe_path, local_apk_root, replay_output_full_path), 
         auto_ack=False)
-    recv_channel.start_consuming()
+
+    logging.info("start consuming!")
+    try:
+        recv_channel.start_consuming()
+    except KeyboardInterrupt:
+        recv_channel.stop_consuming()
 
     pass
