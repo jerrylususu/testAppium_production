@@ -45,7 +45,7 @@ if __name__ == "__main__":
     logging.basicConfig(filename="pylog/receiver.log", level=logging.INFO, format="%(levelname)s: %(asctime)s - %(process)s - [%(filename)s:%(lineno)s] - %(message)s")
     logging.getLogger().addHandler(logging.StreamHandler(sys.stdout))
 
-    recv_connection = pika.BlockingConnection(pika.ConnectionParameters(host="localhost", heartbeat_interval=0))
+    recv_connection = pika.BlockingConnection(pika.ConnectionParameters(host="localhost", heartbeat=0))
     recv_channel = recv_connection.channel()
     recv_channel.exchange_declare(exchange="replay_response",exchange_type="topic")
 

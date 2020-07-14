@@ -65,11 +65,11 @@ if __name__ == "__main__":
     # step2. queues
     # prepare recv/send queue
     # bind send
-    recv_connection = pika.BlockingConnection(pika.ConnectionParameters(host="localhost", heartbeat_interval=0))
+    recv_connection = pika.BlockingConnection(pika.ConnectionParameters(host="localhost", heartbeat=0))
     recv_channel = recv_connection.channel()
     recv_channel.exchange_declare(exchange="replay_request",exchange_type="topic")
 
-    send_connection = pika.BlockingConnection(pika.ConnectionParameters(host="localhost", heartbeat_interval=0))
+    send_connection = pika.BlockingConnection(pika.ConnectionParameters(host="localhost", heartbeat=0))
     send_channel = send_connection.channel()
     send_channel.exchange_declare(exchange="replay_response",exchange_type="topic")
 
