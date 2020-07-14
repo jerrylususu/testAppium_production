@@ -12,6 +12,8 @@ import sys
 from pathlib import Path
 import base64
 
+from appium import webdriver
+
 sys.path.insert(0,'..')
 
 from mq_replay.docker_replay_mq_replaytask import *
