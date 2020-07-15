@@ -136,3 +136,8 @@ Untitled Folder/
 
 # rabbitmq
 */mqdata/
+*mqdata*
+
+# output file log
+*.err
+*.out

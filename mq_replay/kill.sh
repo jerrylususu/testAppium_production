@@ -4,14 +4,16 @@
 # params
 OUTPUT_FILE=pool_pid
 
-echo "killing!"
+BASH_REDIRECT_FOLDER=syslog
+PYTHON_LOG_FOLDER=pylog
+
+echo "start killing!"
 
 while read line; do
-    $PYTHON_PATH $SCRIPT_PATH $line >$BASH_REDIRECT_FOLDER/$line.out 2>$BASH_REDIRECT_FOLDER/$line.err &
-    pid=$!
-    echo "$pid|$line" >> $OUTPUT_FILE 
+    readarray -d "|" -t arr <<< $line
+    kill "${arr[0]}"
+    res=$!
+    echo "started on $line, pid is ${arr[0]}, killed $res"
+done < $OUTPUT_FILE
 
-    echo "started on $line, pid is $pid"
-done < $INPUT_FILE
-
-echo "all started!"
+echo "all runner killed!"
