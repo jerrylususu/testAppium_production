@@ -13,7 +13,8 @@ def docker_init(client, image_name="budtmo/docker-android-x86-8.1", gui_port=608
             "DEVICE": "Nexus 5",
             "APPIUM": "true",
             "APPIUM_HOST": "127.0.0.1",
-            "APPIUM_PORT": "4723"
+            "APPIUM_PORT": "4723",
+            "DATAPARTITION": "3000m"
         },
         # volumes={   # using adb to install, no need to map
         #     "/home/luzhirui/jerrylu/mineapk": {
