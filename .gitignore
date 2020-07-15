@@ -141,3 +141,7 @@ Untitled Folder/
 # output file log
 *.err
 *.out
+
+# pool
+pool_pid
+pool_status
