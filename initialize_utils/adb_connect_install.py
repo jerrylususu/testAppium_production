@@ -100,12 +100,12 @@ def adb_connect_uninstall_pkg(adb_exe_path, adb_connection_str, pkg_name, sleep_
             now = datetime.now()
             current_time = now.strftime("%H:%M:%S")
             # install_str = subprocess.check_output(" ".join([adb_exe_path,"-s",adb_connection_str,"install",apk_path]), shell=True)
-            install_str = subprocess.check_output([adb_exe_path,"-s",adb_connection_str,"uninstall",pkg_name], stderr=subprocess.STDOUT)
+            install_str = subprocess.check_output([adb_exe_path,"-s",adb_connection_str,"shell","pm","uninstall","-k","--user","0",pkg_name], stderr=subprocess.STDOUT)
             print(current_time)
             print("result",install_str.decode("utf8") )
             if any(check_str in install_str.decode("utf8") for check_str in check_strs):
                 uninstalled = True
-                print("{!} Install success!")
+                print("{!} Uninstall success!")
                 break
 
         except subprocess.CalledProcessError as e:
@@ -114,7 +114,7 @@ def adb_connect_uninstall_pkg(adb_exe_path, adb_connection_str, pkg_name, sleep_
             install_str = e.output
             if any(check_str in install_str.decode("utf8") for check_str in check_strs):
                 uninstalled = True
-                print("{!} Install success!")
+                print("{!} Uninstall success!")
                 break
             sleep(sleep_time)
 
