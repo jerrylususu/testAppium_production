@@ -105,6 +105,7 @@ adb_exe_path, local_apk_root, replay_output_full_path) -> bool:
                 replay_response.adbLog = json_file.read()
 
         # send the result
+        logging.info(f"[*] test case {idx} done, sending reply")
         routing_key=f"{replay_request.apkName}.{replay_request.androidVersion}.{testcase.testNumber}.{testcase.ctestNumber}"
         channel.basic_publish(exchange="replay_response", routing_key=routing_key,body=jsonpickle.encode(replay_response))
 
