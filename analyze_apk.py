@@ -1,8 +1,8 @@
 from analyseapk.AnalyseAPK import analyse_apk
 from pathlib import Path
 
-base_apk_root=Path("/home/luzhirui/fdroid_1k6/")
-apk_file="/home/luzhirui/jerrylu/ui_research/fdroid_1k6_step234/fdroid_1k6_gator_success.txt"
+base_apk_root=Path("/home/luzhirui/google_play_3k/")
+apk_file="/home/luzhirui/jerrylu/ui_research/gp3k_step234/gp3k_step1_list.txt"
 
 if __name__ == "__main__":
     lines = []
